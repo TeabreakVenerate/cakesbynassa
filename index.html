@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cakesbynessahh - Handcrafted bespoke celebration cakes, bento lunchbox cakes, and fresh daily pastries on Airport Road, Benin City.">
+  <title>Cakesbynessahh: 9 Divergent Continuous-Scroll Variants</title>
+  
+  <!-- Typography (Inter from Yefepere inspection + Playfair Display for bespoke editorial + Plus Jakarta Sans + Caveat for script piping) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       Global Reset & Foundation
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Emil Kowalski Animation Easing Curves */
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      color: #211513;
+      background-color: #FAF8F5;
+      line-height: 1.5;
+      overflow-x: hidden;
+      padding-bottom: 96px; /* Room for floating bottom picker */
+    }
+
+    #stage {
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Sub-300ms motion utilities (Emil Kowalski standards) */
+    .motion-fade-up {
+      animation: protoFadeUp 240ms var(--ease-out) forwards;
+    }
+
+    @keyframes protoFadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .motion-fade-up {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      html {
+        scroll-behavior: auto !important;
+      }
+      button, a, .proto-picker[data-ready] .proto-picker-highlight {
+        transition: none !important;
+      }
+    }
+
+    /* Emil Kowalski Button Principle: Responsive Press with scale(0.97) */
+    button, input[type="button"], input[type="submit"], a.btn {
+      transition: transform 160ms var(--ease-out), background-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+    }
+    button:active, input[type="button"]:active, input[type="submit"]:active, a.btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Shimmer Skeletons for Image Loading */
+    .proto-img-skeleton {
+      background: linear-gradient(110deg, #ece9e6 8%, #f5f3f0 18%, #ece9e6 33%);
+      background-size: 200% 100%;
+      animation: protoShimmer 1.5s linear infinite;
+    }
+    .proto-img-skeleton-dark {
+      background: linear-gradient(110deg, #251c19 8%, #362925 18%, #251c19 33%);
+      background-size: 200% 100%;
+      animation: protoShimmer 1.5s linear infinite;
+    }
+    @keyframes protoShimmer {
+      to { background-position-x: -200%; }
+    }
+
+    /* ==========================================================================
+       PICKER.MD SPECIFICATION (COPIED VERBATIM)
+       ========================================================================== */
+    .proto-picker {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2147483647;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(10, 10, 10, 0.84);
+      -webkit-backdrop-filter: blur(12px) saturate(1.4);
+      backdrop-filter: blur(12px) saturate(1.4);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+        0 8px 24px rgba(0, 0, 0, 0.24),
+        0 2px 6px rgba(0, 0, 0, 0.12);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 13px;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      user-select: none;
+      -webkit-user-select: none;
+      max-width: 96vw;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .proto-picker::-webkit-scrollbar {
+      display: none;
+    }
+
+    .proto-picker-highlight {
+      position: absolute;
+      top: 4px;
+      left: 0;
+      height: 28px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      will-change: transform;
+    }
+
+    .proto-picker[data-ready] .proto-picker-highlight {
+      transition:
+        transform 250ms cubic-bezier(0.23, 1, 0.32, 1),
+        width 250ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .proto-picker[data-ready] .proto-picker-highlight { transition: none; }
+    }
+
+    .proto-picker-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      height: 28px;
+      padding: 0 11px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      font: inherit;
+      cursor: pointer;
+      transition: color 150ms ease-out;
+    }
+
+    .proto-picker-item:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .proto-picker-item:active {
+      transform: scale(0.97);
+    }
+
+    .proto-picker-item:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.4);
+      outline-offset: 2px;
+    }
+
+    .proto-picker-item[data-active] {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .proto-picker-divider {
+      width: 1px;
+      height: 14px;
+      margin: 0 3px;
+      background: rgba(255, 255, 255, 0.16);
+      flex-shrink: 0;
+    }
+
+    .proto-picker-replay {
+      padding: 0 9px;
+      font-size: 14px;
+    }
+
+    /* Responsive Interruptible Toast Notification */
+    .proto-toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: #111;
+      color: #FFF;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      z-index: 2147483646;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      transition: transform 220ms var(--ease-out);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+    }
+    .proto-toast.visible {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Single stage container where active variant is mounted -->
+  <div id="stage"></div>
+
+  <!-- Toast Notification -->
+  <div id="protoToast" class="proto-toast" role="alert" aria-live="polite">
+    <span>✨</span> <span id="protoToastMsg">Added to order</span>
+  </div>
+
+  <!-- STANDALONE HTML VISUAL PICKER HARNESS (EXACT SPEC FROM PICKER.MD) -->
+  <nav class="proto-picker" aria-label="Prototype variants">
+    <span class="proto-picker-highlight" aria-hidden="true"></span>
+    <button class="proto-picker-item" data-active aria-current="true">Quick Dispatch</button>
+    <button class="proto-picker-item">Editorial</button>
+    <button class="proto-picker-item">Bespoke Studio</button>
+    <button class="proto-picker-item">Bento Express</button>
+    <button class="proto-picker-item">Conversion Matrix</button>
+    <button class="proto-picker-item">Dark Cocoa</button>
+    <button class="proto-picker-item">Yefepere Empirical</button>
+    <button class="proto-picker-item">Dual Stream</button>
+    <button class="proto-picker-item">App Shell</button>
+    <span class="proto-picker-divider" aria-hidden="true"></span>
+    <button class="proto-picker-item proto-picker-replay" aria-label="Replay animation (R)">↻</button>
+  </nav>
+
+  <script>
+    /* Global Smooth Scrolling Function */
+    window.smoothScrollTo = function(id) {
+      if (!id) return;
+      const cleanId = (typeof id === 'string' && id.startsWith('#')) ? id.slice(1) : id;
+      const el = document.getElementById(cleanId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    /* Global Image Lifecycle: Remove skeleton on load, set fallback on error */
+    document.addEventListener('load', function(e) {
+      if (e.target && e.target.tagName === 'IMG') {
+        e.target.classList.remove('proto-img-skeleton', 'proto-img-skeleton-dark');
+      }
+    }, true);
+    document.addEventListener('error', function(e) {
+      if (e.target && e.target.tagName === 'IMG') {
+        if (e.target.src !== FALLBACK_IMG) {
+          e.target.src = FALLBACK_IMG;
+        } else {
+          e.target.classList.remove('proto-img-skeleton', 'proto-img-skeleton-dark');
+        }
+      }
+    }, true);
+
+    /* Toast trigger */
+    window.showToast = function(msg) {
+      const t = document.getElementById('protoToast');
+      const m = document.getElementById('protoToastMsg');
+      if (!t || !m) return;
+      m.textContent = msg;
+      t.classList.add('visible');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => t.classList.remove('visible'), 2200);
+    };
+
+    /* Interactive Stepper Helper */
+    window.updateQty = function(btn, delta) {
+      const parent = btn.closest('.proto-stepper');
+      if (!parent) return;
+      const countEl = parent.querySelector('.stepper-count');
+      let count = parseInt(countEl.textContent, 10) || 1;
+      count = Math.max(1, count + delta);
+      countEl.textContent = count;
+    };
+
+    /* Reliable Image Fallback */
+    const FALLBACK_IMG = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80";
+
+    /* Dataset with Verified Unsplash Images & Authentic Benin Prices */
+    const BAKERY_DATA = [
+      {
+        id: "c1",
+        name: "Red Velvet Celebration Cake",
+        size: "Size 8 (8 × 5 inches) • Serves 8-12",
+        price: "₦28,000",
+        priceNum: 28000,
+        category: "Celebration Cakes",
+        desc: "Buttermilk sponge layered with Madagascar vanilla cream cheese frosting and shell borders.",
+        image: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=800&q=80",
+        notes: "Rich Dutch cocoa undertone, silky vanilla bean crumb, signature deep crimson sponge."
+      },
+      {
+        id: "c2",
+        name: "Deluxe Vanilla Bean Cake",
+        size: "Size 10 (10 × 5 inches) • Serves 16-20",
+        price: "₦42,000",
+        priceNum: 42000,
+        category: "Celebration Cakes",
+        desc: "Two tall layers of vanilla bean sponge with Swiss meringue buttercream swirls and custom piped lettering.",
+        image: "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80",
+        notes: "Infused with pure vanilla caviar, light crumb, velvet whipped butter glaze."
+      },
+      {
+        id: "c3",
+        name: "Grand Party Tier Cake",
+        size: "Size 12 (12 × 5 inches) • Serves 25-30",
+        price: "₦54,000",
+        priceNum: 54000,
+        category: "Celebration Cakes",
+        desc: "Triple chocolate fudge sponge coated with Belgian ganache drip, piped truffles, and golden accents.",
+        image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80",
+        notes: "70% dark chocolate ganache, moist fudge interior, handcrafted edible chocolate truffles."
+      },
+      {
+        id: "b1",
+        name: "Korean Bento Lunchbox Cake",
+        size: "Size 4 (4 × 3 inches) • Serves 1-2",
+        price: "₦9,500",
+        priceNum: 9500,
+        category: "Bento Cakes",
+        desc: "Mini celebration cake tucked inside an eco-clamshell box. Includes wooden fork and piped short message.",
+        image: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=800&q=80",
+        notes: "Delicate sponge, pastel buttercream, fits comfortably in one hand for intimate surprises."
+      },
+      {
+        id: "p1",
+        name: "Golden Meat Pies (Box of 4)",
+        size: "4 Savory Shortcrust Pies",
+        price: "₦5,000",
+        priceNum: 5000,
+        category: "Pastries",
+        desc: "Flaky golden butter shortcrust filled with seasoned minced beef, potatoes, and carrots. Baked warm daily.",
+        image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=800&q=80",
+        notes: "All-butter crust crimped by hand, savory spice blend, zero artificial binders."
+      },
+      {
+        id: "s1",
+        name: "Celebration Small Chops Platter",
+        size: "Platter of 20 Assorted Pieces",
+        price: "₦7,500",
+        priceNum: 7500,
+        category: "Small Chops",
+        desc: "Crispy beef spring rolls, spiced samosas, seasoned puff-puff, and peppered chicken bites.",
+        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+        notes: "Prepared fresh per order, crispy golden wrap, paired with chili dipping sauce."
+      },
+      {
+        id: "pf1",
+        name: "Decadent Red Velvet Parfait",
+        size: "16oz Dessert Cup",
+        price: "₦4,500",
+        priceNum: 4500,
+        category: "Parfaits",
+        desc: "Alternating layers of crumbled red velvet sponge, sweet cream cheese whip, and strawberry glaze.",
+        image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=800&q=80",
+        notes: "Chilled treat cup, layered textures, made fresh every single morning."
+      },
+      {
+        id: "bb1",
+        name: "Gourmet Moist Banana Bread",
+        size: "8-inch Loaf • Serves 6",
+        price: "₦4,000",
+        priceNum: 4000,
+        category: "Pastries",
+        desc: "Naturally sweet ripe Cavendish bananas with cinnamon spice and crunchy toasted cashew bits.",
+        image: "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=800&q=80",
+        notes: "Moist crumb, toasted nuts, naturally sweetened with brown sugar."
+      }
+    ];
+
+    /* ==========================================================================
+       THE 9 RADICALLY DIVERGENT CONTINUOUS-SCROLL VARIANTS
+       ========================================================================== */
+    const variants = [
+
+      /* ------------------------------------------------------------------------
+         VARIANT 1: Quick Dispatch
+         Compact horizontal list-row items, sticky top filter pills, inline counter.
+         ------------------------------------------------------------------------ */
+      function variantQuickDispatch() {
+        return `
+          <div class="motion-fade-up" style="background: #F8F9FA; color: #1E293B; min-height: 100vh;">
+            <style>
+              .v1-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #E2E8F0; padding: 0.85rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+              .v1-brand { font-weight: 800; font-size: 1.25rem; color: #8E1633; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; }
+              .v1-nav-links { display: flex; gap: 0.75rem; align-items: center; }
+              .v1-nav-btn { font-size: 0.85rem; font-weight: 600; padding: 0.4rem 0.85rem; border-radius: 6px; border: none; background: transparent; color: #475569; cursor: pointer; }
+              .v1-nav-btn:hover { background: #F1F5F9; color: #0F172A; }
+              .v1-cart-pill { background: #8E1633; color: white; border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.85rem; font-weight: 700; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; }
+              
+              .v1-hero { background: linear-gradient(135deg, #8E1633 0%, #5E0E21 100%); color: white; padding: 2.75rem 1.5rem; }
+              .v1-hero-inner { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+              .v1-badge { align-self: flex-start; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 0.25rem 0.8rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+              .v1-hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.2; }
+              .v1-hero p { font-size: 0.95rem; color: #FCE7EB; max-width: 600px; }
+              .v1-hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem; }
+              .v1-btn-primary { background: #FFFFFF; color: #8E1633; padding: 0.7rem 1.4rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+              .v1-btn-secondary { background: rgba(255,255,255,0.15); color: #FFFFFF; padding: 0.7rem 1.4rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.3); cursor: pointer; }
+              
+              .v1-filter-bar { position: sticky; top: 57px; z-index: 40; background: #FFFFFF; border-bottom: 1px solid #E2E8F0; padding: 0.65rem 1.5rem; display: flex; gap: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+              .v1-pill { padding: 0.4rem 1rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: 1px solid #CBD5E1; background: #F8FAFC; color: #475569; white-space: nowrap; cursor: pointer; transition: all 150ms; }
+              .v1-pill.active, .v1-pill:hover { background: #8E1633; color: #FFFFFF; border-color: #8E1633; }
+              
+              .v1-container { max-width: 900px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+              .v1-section-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; color: #0F172A; display: flex; align-items: center; justify-content: space-between; }
+              
+              /* Compact Horizontal List-Row Item */
+              .v1-list-group { display: flex; flex-direction: column; gap: 0.75rem; }
+              .v1-row-card { display: flex; align-items: center; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 0.75rem 1rem; gap: 1rem; transition: transform 180ms ease, box-shadow 180ms ease; }
+              .v1-row-card:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+              .v1-row-img { width: 90px; height: 90px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+              .v1-row-details { flex: 1; min-width: 0; }
+              .v1-row-dim { font-size: 0.75rem; font-weight: 700; color: #8E1633; text-transform: uppercase; letter-spacing: 0.04em; }
+              .v1-row-title { font-size: 1rem; font-weight: 700; color: #0F172A; margin: 0.15rem 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+              .v1-row-desc { font-size: 0.8rem; color: #64748B; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+              .v1-row-trust { font-size: 0.7rem; font-weight: 600; color: #059669; margin-top: 0.25rem; display: flex; align-items: center; gap: 0.3rem; }
+              
+              .v1-row-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; flex-shrink: 0; }
+              .v1-row-price { font-size: 1.15rem; font-weight: 800; color: #0F172A; }
+              .v1-stepper { display: flex; align-items: center; background: #F1F5F9; border-radius: 6px; padding: 2px; }
+              .v1-step-btn { width: 26px; height: 26px; border: none; background: transparent; font-weight: 800; color: #334155; border-radius: 4px; cursor: pointer; }
+              .v1-step-btn:hover { background: #E2E8F0; }
+              .stepper-count { width: 24px; text-align: center; font-size: 0.85rem; font-weight: 700; }
+              .v1-add-btn { background: #8E1633; color: #FFFFFF; font-size: 0.8rem; font-weight: 700; padding: 0.4rem 0.9rem; border-radius: 6px; border: none; cursor: pointer; }
+              .v1-add-btn:hover { background: #731027; }
+              
+              /* Custom Studio Section */
+              .v1-custom-box { background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 12px; padding: 1.5rem; margin-top: 2rem; }
+              .v1-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+              @media (max-width: 600px) { .v1-form-row { grid-template-columns: 1fr; } .v1-row-card { padding: 0.6rem; gap: 0.6rem; } .v1-row-img { width: 75px; height: 75px; } }
+            </style>
+
+            <!-- Sticky Header -->
+            <header class="v1-header">
+              <div class="v1-brand" onclick="smoothScrollTo('v1-hero')">
+                <span>⚡</span> Cakesbynessahh
+              </div>
+              <div class="v1-nav-links">
+                <button class="v1-nav-btn" onclick="smoothScrollTo('menu')">Quick Menu</button>
+                <button class="v1-nav-btn" onclick="smoothScrollTo('custom-studio')">Custom Studio</button>
+                <button class="v1-cart-pill" onclick="smoothScrollTo('v1-cart')">
+                  <span>Bag</span> <span>(2)</span>
+                </button>
+              </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="v1-hero" id="v1-hero">
+              <div class="v1-hero-inner">
+                <span class="v1-badge">Airport Road Fast Dispatch</span>
+                <h1>High-Speed Cake Dispatch &amp; Fresh Daily Bakery</h1>
+                <p>Baked fresh each morning in Benin City. Pick up on Airport Road in 35 minutes or dispatch straight to your door across GRA and Ugbowo.</p>
+                <div class="v1-hero-actions">
+                  <button class="v1-btn-primary" onclick="smoothScrollTo('menu')">View Bakery Menu ↓</button>
+                  <button class="v1-btn-secondary" onclick="smoothScrollTo('custom-studio')">Custom Cake Studio</button>
+                </div>
+              </div>
+            </section>
+
+            <!-- Sticky Category Pills -->
+            <div class="v1-filter-bar">
+              <button class="v1-pill active" onclick="v1FilterCategory(this, 'All')">⚡ All Items</button>
+              <button class="v1-pill" onclick="v1FilterCategory(this, 'Celebration Cakes')">🎂 Celebration Cakes</button>
+              <button class="v1-pill" onclick="v1FilterCategory(this, 'Bento Cakes')">🍱 Bento Boxes</button>
+              <button class="v1-pill" onclick="v1FilterCategory(this, 'Pastries')">🥟 Meat Pies &amp; Pastries</button>
+              <button class="v1-pill" onclick="v1FilterCategory(this, 'Small Chops')">🍢 Small Chops</button>
+            </div>
+
+            <!-- Continuous Scroll Menu Section -->
+            <main class="v1-container">
+              <div id="menu">
+                <div class="v1-section-title">
+                  <span>Daily Dispatch Menu</span>
+                  <span style="font-size: 0.8rem; font-weight: 500; color: #64748B;">Showing 8 available items</span>
+                </div>
+
+                <div class="v1-list-group">
+                  ${BAKERY_DATA.map(item => `
+                    <div class="v1-row-card">
+                      <img src="${item.image}" alt="${item.name}" class="v1-row-img proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                      <div class="v1-row-details">
+                        <div class="v1-row-dim">${item.size}</div>
+                        <div class="v1-row-title">${item.name}</div>
+                        <div class="v1-row-desc">${item.desc}</div>
+                        <div class="v1-row-trust">✓ Baked fresh on Airport Rd • Pay on Delivery available</div>
+                      </div>
+                      <div class="v1-row-actions">
+                        <div class="v1-row-price">${item.price}</div>
+                        <div class="v1-stepper proto-stepper">
+                          <button class="v1-step-btn" onclick="updateQty(this, -1)">−</button>
+                          <span class="stepper-count">1</span>
+                          <button class="v1-step-btn" onclick="updateQty(this, 1)">+</button>
+                        </div>
+                        <button class="v1-add-btn" onclick="showToast('Added ${item.name} to bag')">Add +</button>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Continuous Custom Studio Section -->
+              <section id="custom-studio" class="v1-custom-box">
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #0F172A;">Custom Cake Fast Builder</h3>
+                <p style="font-size: 0.85rem; color: #64748B; margin-top: 0.25rem;">Need custom wording or specific diameter? Build here with 24 hours advance notice.</p>
+                <div class="v1-form-row">
+                  <div>
+                    <label style="font-size: 0.8rem; font-weight: 700; color: #334155; display: block; margin-bottom: 0.3rem;">Select Size</label>
+                    <select style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #CBD5E1; font-size: 0.85rem;">
+                      <option>Size 8 (8 x 5 inches) • ₦28,000</option>
+                      <option>Size 10 (10 x 5 inches) • ₦42,000</option>
+                      <option>Size 12 (12 x 5 inches) • ₦54,000</option>
+                      <option>Bento 4-inch • ₦9,500</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="font-size: 0.8rem; font-weight: 700; color: #334155; display: block; margin-bottom: 0.3rem;">Sponge Flavor</label>
+                    <select style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #CBD5E1; font-size: 0.85rem;">
+                      <option>Red Velvet &amp; Cream Cheese</option>
+                      <option>Madagascar Vanilla Bean</option>
+                      <option>Belgian Chocolate Fudge</option>
+                    </select>
+                  </div>
+                </div>
+                <div style="margin-top: 1rem;">
+                  <label style="font-size: 0.8rem; font-weight: 700; color: #334155; display: block; margin-bottom: 0.3rem;">Piped Inscription</label>
+                  <input type="text" placeholder="e.g. Happy Birthday Osas!" value="Happy Birthday Osas!" style="width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #CBD5E1; font-size: 0.85rem;">
+                </div>
+                <div style="margin-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 0.85rem; color: #059669; font-weight: 700;">✓ Photo sent before dispatch</span>
+                  <button class="v1-btn-primary" style="background: #8E1633; color: white;" onclick="showToast('Custom Cake Configured! Directing to WhatsApp')">Confirm via WhatsApp</button>
+                </div>
+              </section>
+
+              <!-- Continuous Cart & Trust Section -->
+              <section id="v1-cart" style="margin-top: 2.5rem; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.5rem;">
+                <h3 style="font-size: 1.15rem; font-weight: 800;">Your Order Bag (Airport Road, Benin City)</h3>
+                <div style="margin-top: 1rem; border-bottom: 1px solid #E2E8F0; padding-bottom: 0.8rem; display: flex; justify-content: space-between;">
+                  <span>Red Velvet Celebration Cake (Size 8)</span>
+                  <strong>₦28,000</strong>
+                </div>
+                <div style="margin-top: 0.8rem; display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 800;">
+                  <span>Total (Pay on Delivery):</span>
+                  <span style="color: #8E1633;">₦28,000</span>
+                </div>
+                <button style="width: 100%; margin-top: 1rem; padding: 0.85rem; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;" onclick="window.open('https://wa.me/2349059340229?text=Hello%20Cakesbynessahh%2C%20I%20want%20to%20order%20the%20Size%208%20Red%20Velvet%20Cake%20for%20pickup%2Fdelivery%20in%20Benin%20City')">
+                  💬 1-Tap WhatsApp Checkout (09059340229)
+                </button>
+              </section>
+            </main>
+          </div>
+        `;
+      },
+
+      /* ------------------------------------------------------------------------
+         VARIANT 2: Editorial Lookbook
+         Asymmetric editorial layout, alternating wide-format cards, serif headlines, tasting notes.
+         ------------------------------------------------------------------------ */
+      function variantEditorialLookbook() {
+        return `
+          <div class="motion-fade-up" style="background: #FCFBF9; color: #1C1917; min-height: 100vh;">
+            <style>
+              .v2-header { position: sticky; top: 0; z-index: 50; background: rgba(252,251,249,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid #E7E5E4; padding: 1.25rem 2.5rem; display: flex; align-items: center; justify-content: space-between; }
+              .v2-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; color: #8E1633; cursor: pointer; }
+              .v2-nav { display: flex; gap: 2rem; align-items: center; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+              .v2-nav a { color: #57534E; text-decoration: none; cursor: pointer; }
+              .v2-nav a:hover { color: #8E1633; }
+              
+              .v2-hero { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem 3rem; text-align: center; }
+              .v2-hero-kicker { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; color: #8E1633; font-weight: 700; margin-bottom: 1rem; }
+              .v2-hero-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
+              .v2-hero-sub { font-size: 1.1rem; color: #78716C; max-width: 650px; margin: 0 auto 2rem; font-style: italic; }
+              .v2-hero-btn { display: inline-block; padding: 0.85rem 2.2rem; background: #8E1633; color: #FFFFFF; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border: none; cursor: pointer; }
+              .v2-hero-btn:hover { background: #6F0F26; }
+              
+              .v2-container { max-width: 1200px; margin: 0 auto; padding: 2rem 2rem 5rem; }
+              
+              /* Alternating Asymmetric Editorial Cards */
+              .v2-editorial-row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3.5rem; align-items: center; margin-bottom: 5rem; border-bottom: 1px solid #E7E5E4; padding-bottom: 4rem; }
+              .v2-editorial-row.reverse { grid-template-columns: 1fr 1.3fr; }
+              @media (max-width: 860px) { .v2-editorial-row, .v2-editorial-row.reverse { grid-template-columns: 1fr; gap: 1.5rem; } }
+              
+              .v2-img-frame { position: relative; overflow: hidden; border-radius: 2px; }
+              .v2-img-frame img { width: 100%; height: 440px; object-fit: cover; display: block; }
+              .v2-meta-dim { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: #A8A29E; font-weight: 700; }
+              .v2-meta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; font-weight: 700; margin: 0.5rem 0 1rem; }
+              .v2-meta-desc { font-size: 0.95rem; color: #57534E; line-height: 1.7; margin-bottom: 1.25rem; }
+              .v2-tasting-box { background: #F5F2EC; border-left: 2px solid #8E1633; padding: 0.85rem 1.2rem; font-size: 0.85rem; color: #44403C; font-style: italic; margin-bottom: 1.5rem; }
+              .v2-price-line { display: flex; align-items: center; justify-content: space-between; margin-top: 1.5rem; }
+              .v2-price { font-family: 'Playfair Display', Georgia, serif; font-size: 1.75rem; font-weight: 700; color: #8E1633; }
+              .v2-order-btn { padding: 0.75rem 1.5rem; border: 1px solid #8E1633; background: transparent; color: #8E1633; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
+              .v2-order-btn:hover { background: #8E1633; color: white; }
+              
+              .v2-commission-box { background: #F5F2EC; border: 1px solid #D6D3CD; padding: 3rem; margin-top: 3rem; text-align: center; }
+              .v2-commission-box h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.2rem; margin-bottom: 1rem; }
+            </style>
+
+            <!-- Editorial Header -->
+            <header class="v2-header">
+              <div class="v2-brand" onclick="smoothScrollTo('v2-hero')">Cakesbynessahh</div>
+              <nav class="v2-nav">
+                <a onclick="smoothScrollTo('menu')">Lookbook</a>
+                <a onclick="smoothScrollTo('custom-studio')">Atelier</a>
+                <a onclick="smoothScrollTo('v2-contact')">Inquiries</a>
+              </nav>
+            </header>
+
+            <!-- Lookbook Hero -->
+            <section class="v2-hero" id="v2-hero">
+              <div class="v2-hero-kicker">Benin City Sugarcraft Lookbook</div>
+              <h1 class="v2-hero-title">Making Every Celebration Sweeter</h1>
+              <p class="v2-hero-sub">Handcrafted layer cakes, delicate crumb structure, and refined pastry textures baked daily on Airport Road.</p>
+              <button class="v2-hero-btn" onclick="smoothScrollTo('menu')">Explore The Collection ↓</button>
+            </section>
+
+            <div class="v2-container">
+              <!-- Asymmetric Alternating Cards Section -->
+              <section id="menu">
+                <!-- Item 1: Image Left, Story Right -->
+                <article class="v2-editorial-row">
+                  <div class="v2-img-frame">
+                    <img src="${BAKERY_DATA[0].image}" alt="${BAKERY_DATA[0].name}" class="proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                  </div>
+                  <div>
+                    <span class="v2-meta-dim">${BAKERY_DATA[0].size}</span>
+                    <h2 class="v2-meta-title">${BAKERY_DATA[0].name}</h2>
+                    <p class="v2-meta-desc">${BAKERY_DATA[0].desc}</p>
+                    <div class="v2-tasting-box">
+                      <strong>Tasting Notes:</strong> ${BAKERY_DATA[0].notes}
+                    </div>
+                    <div class="v2-price-line">
+                      <span class="v2-price">${BAKERY_DATA[0].price}</span>
+                      <button class="v2-order-btn" onclick="showToast('Reserved ${BAKERY_DATA[0].name}')">Reserve Cake</button>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Item 2: Story Left, Image Right -->
+                <article class="v2-editorial-row reverse">
+                  <div>
+                    <span class="v2-meta-dim">${BAKERY_DATA[1].size}</span>
+                    <h2 class="v2-meta-title">${BAKERY_DATA[1].name}</h2>
+                    <p class="v2-meta-desc">${BAKERY_DATA[1].desc}</p>
+                    <div class="v2-tasting-box">
+                      <strong>Tasting Notes:</strong> ${BAKERY_DATA[1].notes}
+                    </div>
+                    <div class="v2-price-line">
+                      <span class="v2-price">${BAKERY_DATA[1].price}</span>
+                      <button class="v2-order-btn" onclick="showToast('Reserved ${BAKERY_DATA[1].name}')">Reserve Cake</button>
+                    </div>
+                  </div>
+                  <div class="v2-img-frame">
+                    <img src="${BAKERY_DATA[1].image}" alt="${BAKERY_DATA[1].name}" class="proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                  </div>
+                </article>
+
+                <!-- Item 3: Image Left, Story Right -->
+                <article class="v2-editorial-row">
+                  <div class="v2-img-frame">
+                    <img src="${BAKERY_DATA[2].image}" alt="${BAKERY_DATA[2].name}" class="proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                  </div>
+                  <div>
+                    <span class="v2-meta-dim">${BAKERY_DATA[2].size}</span>
+                    <h2 class="v2-meta-title">${BAKERY_DATA[2].name}</h2>
+                    <p class="v2-meta-desc">${BAKERY_DATA[2].desc}</p>
+                    <div class="v2-tasting-box">
+                      <strong>Tasting Notes:</strong> ${BAKERY_DATA[2].notes}
+                    </div>
+                    <div class="v2-price-line">
+                      <span class="v2-price">${BAKERY_DATA[2].price}</span>
+                      <button class="v2-order-btn" onclick="showToast('Reserved ${BAKERY_DATA[2].name}')">Reserve Cake</button>
+                    </div>
+                  </div>
+                </article>
+              </section>
+
+              <!-- Custom Studio Section: Atelier Commission -->
+              <section id="custom-studio" class="v2-commission-box">
+                <span class="v2-meta-dim">Bespoke Atelier</span>
+                <h3>Custom Celebration Commission</h3>
+                <p style="max-width: 600px; margin: 0 auto 2rem; color: #57534E; font-size: 0.95rem;">Each bespoke commission includes handwritten inscription piping, hand-whipped Swiss buttercream, and photo verification prior to dispatch from Airport Road.</p>
+                <div style="max-width: 500px; margin: 0 auto; text-align: left;">
+                  <label style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: #57534E;">Custom Inscription</label>
+                  <input type="text" value="Celebrating 30 Years of Grace" style="width: 100%; padding: 0.8rem; margin: 0.4rem 0 1.2rem; border: 1px solid #A8A29E; background: #FFFFFF; font-family: 'Playfair Display', serif; font-size: 1.1rem;">
+                  <button class="v2-hero-btn" style="width: 100%;" onclick="window.open('https://wa.me/2349059340229?text=Hello%20Cakesbynessahh%2C%20I%20wish%20to%20commission%20a%20bespoke%20celebration%20cake%20in%20Benin%20City')">Submit Commission Request via WhatsApp</button>
+                </div>
+              </section>
+
+              <!-- Contact & Trust Details -->
+              <footer id="v2-contact" style="margin-top: 4rem; text-align: center; border-top: 1px solid #E7E5E4; padding-top: 2rem; font-size: 0.85rem; color: #78716C;">
+                <p>Cakesbynessahh Atelier • Airport Road, Benin City, Edo State</p>
+                <p style="margin-top: 0.3rem;">Pay on Delivery with Initial Deposit • Direct Line: +234 905 934 0229</p>
+              </footer>
+            </div>
+          </div>
+        `;
+      },
+
+      /* ------------------------------------------------------------------------
+         VARIANT 3: Bespoke Studio
+         Configurator-first! 3-step interactive cake builder at top with live plate preview,
+         flowing into treat catalog below.
+         ------------------------------------------------------------------------ */
+      function variantBespokeStudio() {
+        return `
+          <div class="motion-fade-up" style="background: #FDFBF7; color: #1F2937; min-height: 100vh;">
+            <style>
+              .v3-header { position: sticky; top: 0; z-index: 50; background: rgba(253,251,247,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #E5E7EB; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+              .v3-brand { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.3rem; color: #8E1633; cursor: pointer; }
+              .v3-nav { display: flex; gap: 1rem; align-items: center; }
+              .v3-nav button { padding: 0.45rem 1rem; border-radius: 999px; font-weight: 700; font-size: 0.85rem; cursor: pointer; border: 1px solid #E5E7EB; background: white; }
+              
+              .v3-hero { text-align: center; padding: 2.5rem 1.5rem 1.5rem; max-width: 780px; margin: 0 auto; }
+              .v3-hero h1 { font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.2; color: #111827; }
+              .v3-hero p { font-size: 1rem; color: #4B5563; margin-top: 0.5rem; }
+              
+              /* Pinned Configurator Studio Container */
+              .v3-studio-container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+              .v3-studio-card { background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 2rem; }
+              
+              .v3-builder-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: start; }
+              @media (max-width: 800px) { .v3-builder-grid { grid-template-columns: 1fr; } }
+              
+              .v3-step-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: #8E1633; color: white; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.6rem; }
+              .v3-step-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
+              
+              .v3-chips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1.5rem; }
+              .v3-chip { padding: 0.75rem; border-radius: 10px; border: 2px solid #E5E7EB; background: #FAFAFA; cursor: pointer; text-align: left; transition: all 180ms; }
+              .v3-chip:hover { border-color: #CBD5E1; }
+              .v3-chip.selected { border-color: #8E1633; background: #FFF5F7; }
+              .v3-chip-name { font-size: 0.85rem; font-weight: 800; color: #111827; }
+              .v3-chip-meta { font-size: 0.75rem; color: #6B7280; margin-top: 0.15rem; }
+              .v3-chip-price { font-size: 0.85rem; font-weight: 800; color: #8E1633; margin-top: 0.35rem; }
+              
+              /* Live Cake Visualizer */
+              .v3-preview-box { background: #FAF5F0; border-radius: 16px; border: 1px dashed #D1C7BD; padding: 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+              .v3-cake-plate { width: 190px; height: 190px; border-radius: 50%; background: radial-gradient(circle, #8E1633 40%, #720D25 80%); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 28px rgba(142,22,51,0.3); position: relative; border: 6px solid #FFFFFF; margin-bottom: 1rem; }
+              .v3-inscription-text { font-family: 'Caveat', cursive; font-size: 1.4rem; color: #FFFFFF; text-align: center; padding: 0.8rem; line-height: 1.2; word-break: break-word; }
+              
+              /* Compact Treat Catalog Below */
+              .v3-treats-section { margin-top: 4rem; }
+              .v3-treats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+              .v3-treat-card { background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 12px; overflow: hidden; padding: 0.85rem; }
+              .v3-treat-card img { width: 100%; height: 130px; object-fit: cover; border-radius: 8px; }
+            </style>
+
+            <!-- Header -->
+            <header class="v3-header">
+              <div class="v3-brand" onclick="smoothScrollTo('v3-hero')">Bespoke Cake Studio</div>
+              <div class="v3-nav">
+                <button onclick="smoothScrollTo('custom-studio')" style="background: #8E1633; color: white; border-color: #8E1633;">Custom Studio</button>
+                <button onclick="smoothScrollTo('menu')">Menu</button>
+              </div>
+            </header>
+
+            <div class="v3-hero" id="v3-hero">
+              <h1>Build Your Custom Celebration Cake</h1>
+              <p>Pick your size, select your sponge flavor, and type your custom inscription with instant live preview. Baked fresh on Airport Road, Benin City.</p>
+            </div>
+
+            <main class="v3-studio-container">
+              <!-- PINNED 3-STEP BUILDER -->
+              <section id="custom-studio" class="v3-studio-card">
+                <div class="v3-builder-grid">
+                  <!-- Builder Inputs -->
+                  <div>
+                    <!-- Step 1 -->
+                    <div>
+                      <span class="v3-step-badge">Step 1</span>
+                      <h3 class="v3-step-title">Select Size &amp; Guest Count</h3>
+                      <div class="v3-chips-grid" id="v3SizeGroup">
+                        <div class="v3-chip selected" onclick="v3SelectSize(this, 'Size 8 (8 x 5 in)', '₦28,000')">
+                          <div class="v3-chip-name">Size 8 Classic</div>
+                          <div class="v3-chip-meta">8x5 in • Serves 8-12</div>
+                          <div class="v3-chip-price">₦28,000</div>
+                        </div>
+                        <div class="v3-chip" onclick="v3SelectSize(this, 'Size 10 (10 x 5 in)', '₦42,000')">
+                          <div class="v3-chip-name">Size 10 Deluxe</div>
+                          <div class="v3-chip-meta">10x5 in • Serves 16-20</div>
+                          <div class="v3-chip-price">₦42,000</div>
+                        </div>
+                        <div class="v3-chip" onclick="v3SelectSize(this, 'Size 12 (12 x 5 in)', '₦54,000')">
+                          <div class="v3-chip-name">Size 12 Grand</div>
+                          <div class="v3-chip-meta">12x5 in • Serves 25-30</div>
+                          <div class="v3-chip-price">₦54,000</div>
+                        </div>
+                        <div class="v3-chip" onclick="v3SelectSize(this, 'Size 4 Bento Box', '₦9,500')">
+                          <div class="v3-chip-name">Size 4 Bento</div>
+                          <div class="v3-chip-meta">4x3 in • Serves 1-2</div>
+                          <div class="v3-chip-price">₦9,500</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div>
+                      <span class="v3-step-badge">Step 2</span>
+                      <h3 class="v3-step-title">Select Sponge Flavor</h3>
+                      <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                          <input type="radio" name="v3sponge" checked onchange="v3ChangeFlavor('Red Velvet Sponge')"> Red Velvet (Vanilla Cream Cheese)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                          <input type="radio" name="v3sponge" onchange="v3ChangeFlavor('Vanilla Bean Sponge')"> Madagascar Vanilla Bean (Swiss Buttercream)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;">
+                          <input type="radio" name="v3sponge" onchange="v3ChangeFlavor('Chocolate Fudge Sponge')"> Belgian Dark Chocolate (Ganache Drip)
+                        </label>
+                      </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div>
+                      <span class="v3-step-badge">Step 3</span>
+                      <h3 class="v3-step-title">Type Piped Inscription</h3>
+                      <input type="text" id="v3InscriptionInput" value="Happy Birthday Michelle!" maxlength="35" oninput="v3UpdateInscription(this.value)" placeholder="e.g. Happy Birthday Osas!" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #CBD5E1; font-size: 0.95rem;">
+                      <span style="font-size: 0.75rem; color: #6B7280; margin-top: 0.25rem; display: block;">Letters appear live on the cake plate preview →</span>
+                    </div>
+                  </div>
+
+                  <!-- Live Plate Visualizer -->
+                  <div class="v3-preview-box">
+                    <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #8E1633; margin-bottom: 0.75rem;">Live Cake Visualizer</span>
+                    <div class="v3-cake-plate">
+                      <div class="v3-inscription-text" id="v3LiveInscription">Happy Birthday Michelle!</div>
+                    </div>
+                    <div style="font-size: 0.9rem; font-weight: 800; color: #111827;" id="v3PreviewMeta">Size 8 (8 x 5 in) • Red Velvet</div>
+                    <div style="font-size: 1.4rem; font-weight: 800; color: #8E1633; margin: 0.5rem 0;" id="v3PreviewPrice">₦28,000</div>
+                    <button style="width: 100%; padding: 0.8rem; background: #8E1633; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;" onclick="showToast('Custom Cake order saved to WhatsApp draft!')">Review Bespoke Order</button>
+                    <span style="font-size: 0.75rem; color: #059669; font-weight: 600; margin-top: 0.5rem;">✓ WhatsApp photo sent before dispatch</span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Compact Treat Catalog Below -->
+              <section id="treats-catalog" class="v3-treats-section">
+                <div id="menu"></div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                  <div>
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #8E1633; text-transform: uppercase;">Celebration Add-Ons</span>
+                    <h2 style="font-size: 1.5rem; font-weight: 800;">Fresh Daily Pastries &amp; Treats</h2>
+                  </div>
+                </div>
+
+                <div class="v3-treats-grid">
+                  ${BAKERY_DATA.slice(3).map(item => `
+                    <div class="v3-treat-card">
+                      <img src="${item.image}" alt="${item.name}" class="proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                      <h4 style="font-size: 0.9rem; font-weight: 800; margin-top: 0.5rem;">${item.name}</h4>
+                      <p style="font-size: 0.75rem; color: #6B7280; margin: 0.2rem 0;">${item.size}</p>
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
+                        <span style="font-weight: 800; color: #8E1633; font-size: 0.95rem;">${item.price}</span>
+                        <button style="padding: 0.35rem 0.7rem; background: #111827; color: white; border: none; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer;" onclick="showToast('Added ${item.name}')">+ Add</button>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </section>
+            </main>
+          </div>
+        `;
+      },
+
+      /* ------------------------------------------------------------------------
+         VARIANT 4: Bento Express
+         Instagram-style square grid (2-col mobile, 4-col desktop), quick-order taps,
+         pastel strawberry & cream vibe.
+         ------------------------------------------------------------------------ */
+      function variantBentoExpress() {
+        return `
+          <div class="motion-fade-up" style="background: #FFF5F7; color: #381A22; min-height: 100vh;">
+            <style>
+              .v4-header { position: sticky; top: 0; z-index: 50; background: rgba(255,245,247,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid #FED7E2; padding: 0.85rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+              .v4-brand { font-weight: 800; font-size: 1.25rem; color: #D53F8C; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; }
+              .v4-nav-btn { font-size: 0.85rem; font-weight: 700; color: #702459; background: #FED7E2; padding: 0.4rem 0.9rem; border-radius: 999px; border: none; cursor: pointer; }
+              
+              .v4-hero { text-align: center; padding: 3rem 1.5rem 2rem; max-width: 700px; margin: 0 auto; }
+              .v4-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: #702459; line-height: 1.1; }
+              .v4-hero p { font-size: 1rem; color: #97266D; margin-top: 0.5rem; }
+              
+              .v4-container { max-width: 1100px; margin: 0 auto; padding: 1rem 1.25rem 4rem; }
+              
+              /* Instagram-Style Square Grid */
+              .v4-bento-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+              @media (max-width: 900px) { .v4-bento-grid { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; } }
+              
+              .v4-square-card { background: #FFFFFF; border-radius: 18px; border: 1px solid #FED7E2; overflow: hidden; box-shadow: 0 4px 15px rgba(213,63,140,0.06); transition: transform 200ms ease; display: flex; flex-direction: column; }
+              .v4-square-card:hover { transform: translateY(-3px); }
+              .v4-img-box { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; }
+              .v4-img-box img { width: 100%; height: 100%; object-fit: cover; }
+              .v4-pill-badge { position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px); padding: 0.25rem 0.6rem; border-radius: 999px; font-size: 0.7rem; font-weight: 800; color: #D53F8C; }
+              
+              .v4-card-content { padding: 0.85rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+              .v4-card-title { font-size: 0.95rem; font-weight: 800; color: #4A154B; line-height: 1.3; }
+              .v4-card-dim { font-size: 0.75rem; color: #97266D; margin-top: 0.2rem; }
+              .v4-card-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 0.75rem; }
+              .v4-card-price { font-size: 1.1rem; font-weight: 800; color: #D53F8C; }
+              .v4-tap-btn { background: #D53F8C; color: white; border: none; border-radius: 999px; padding: 0.45rem 0.95rem; font-size: 0.75rem; font-weight: 800; cursor: pointer; }
+              .v4-tap-btn:hover { background: #B83280; }
+            </style>
+
+            <header class="v4-header">
+              <div class="v4-brand" onclick="smoothScrollTo('v4-hero')">
+                <span>🍱</span> Bento &amp; Party Express
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button class="v4-nav-btn" onclick="smoothScrollTo('menu')">Grid Menu</button>
+                <button class="v4-nav-btn" style="background: #D53F8C; color: white;" onclick="smoothScrollTo('custom-studio')">Order Custom</button>
+              </div>
+            </header>
+
+            <div class="v4-hero" id="v4-hero">
+              <span style="font-size: 0.8rem; font-weight: 800; color: #D53F8C; text-transform: uppercase;">Same-Day Airport Road Dispatch</span>
+              <h1>Cute Bento Cakes &amp; Party Boxes</h1>
+              <p>Korean 4-inch lunchbox cakes, party small chops, and celebration treats for fast surprise gifting in Benin City.</p>
+            </div>
+
+            <main class="v4-container">
+              <div id="menu">
+                <div class="v4-bento-grid">
+                  ${BAKERY_DATA.map(item => `
+                    <div class="v4-square-card">
+                      <div class="v4-img-box">
+                        <img src="${item.image}" alt="${item.name}" class="proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                        <span class="v4-pill-badge">${item.category}</span>
+                      </div>
+                      <div class="v4-card-content">
+                        <div>
+                          <div class="v4-card-title">${item.name}</div>
+                          <div class="v4-card-dim">${item.size}</div>
+                        </div>
+                        <div class="v4-card-bottom">
+                          <span class="v4-card-price">${item.price}</span>
+                          <button class="v4-tap-btn" onclick="showToast('Tapped ${item.name}!')">Tap Order</button>
+                        </div>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Quick Bento Customizer -->
+              <section id="custom-studio" style="margin-top: 3.5rem; background: #FFFFFF; border: 2px solid #FED7E2; border-radius: 20px; padding: 2rem;">
+                <h3 style="font-size: 1.3rem; font-weight: 800; color: #702459;">Custom Bento Lunchbox Cake (₦9,500)</h3>
+                <p style="font-size: 0.85rem; color: #97266D; margin-top: 0.3rem;">Personal 4-inch cake in clamshell packaging with wooden fork and ribbon. Ready in 4 hours on Airport Road.</p>
+                <div style="margin-top: 1rem;">
+                  <label style="font-size: 0.8rem; font-weight: 700; color: #4A154B; display: block; margin-bottom: 0.3rem;">Your Short Inscription (Max 20 letters)</label>
+                  <input type="text" value="Love You Mum!" placeholder="e.g. You Got This!" style="width: 100%; padding: 0.75rem; border-radius: 10px; border: 1px solid #FED7E2; font-size: 0.95rem;">
+                </div>
+                <div style="margin-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 0.85rem; font-weight: 700; color: #059669;">✓ Pay on Delivery Available</span>
+                  <button class="v4-tap-btn" style="padding: 0.7rem 1.4rem; font-size: 0.9rem;" onclick="window.open('https://wa.me/2349059340229?text=Hello%20Cakesbynessahh%2C%20I%20want%20to%20order%20a%20Korean%20Bento%20Cake%20for%209500%20Naira')">Order via WhatsApp</button>
+                </div>
+              </section>
+            </main>
+          </div>
+        `;
+      },
+
+      /* ------------------------------------------------------------------------
+         VARIANT 5: Conversion Matrix
+         High-urgency direct-response layout, "Pay on Delivery in Benin City" trust badges,
+         countdown timer, high-contrast price tags, and urgent checkout buttons.
+         ------------------------------------------------------------------------ */
+      function variantConversionMatrix() {
+        return `
+          <div class="motion-fade-up" style="background: #FFFFFF; color: #0F172A; min-height: 100vh;">
+            <style>
+              .v5-ticker { background: #DC2626; color: white; padding: 0.5rem 1rem; text-align: center; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; }
+              .v5-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.98); border-bottom: 2px solid #E2E8F0; padding: 0.85rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+              .v5-brand { font-size: 1.3rem; font-weight: 900; color: #B91C1C; cursor: pointer; }
+              
+              .v5-hero { background: #FFF1F2; border-bottom: 1px solid #FECDD3; padding: 2.5rem 1.5rem; }
+              .v5-hero-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+              .v5-stars { color: #F59E0B; font-size: 1.1rem; margin-bottom: 0.5rem; }
+              .v5-hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 900; color: #881337; line-height: 1.15; }
+              .v5-hero p { font-size: 1rem; color: #9F1239; max-width: 650px; margin: 0.75rem auto 1.5rem; }
+              
+              /* Trust Badges Banner */
+              .v5-trust-strip { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
+              .v5-badge-pill { background: #FFFFFF; border: 1px solid #FECDD3; border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 800; color: #9F1239; display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+              
+              .v5-container { max-width: 1050px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+              
+              /* High-Urgency Grid */
+              .v5-matrix-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+              @media (max-width: 860px) { .v5-matrix-grid { grid-template-columns: 1fr; } }
+              
+              .v5-card { border: 2px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; background: #FFFFFF; display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: border-color 150ms; }
+              .v5-card:hover { border-color: #B91C1C; }
+              .v5-featured-card { border-color: #DC2626; box-shadow: 0 8px 24px rgba(220,38,38,0.12); }
+              .v5-ribbon { position: absolute; top: -11px; right: 15px; background: #DC2626; color: white; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 999px; }
+              
+              .v5-card-img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem; }
+              .v5-dim-tag { font-size: 0.75rem; font-weight: 800; color: #DC2626; text-transform: uppercase; }
+              .v5-title { font-size: 1.15rem; font-weight: 800; margin: 0.25rem 0; }
+              .v5-desc { font-size: 0.85rem; color: #64748B; margin-bottom: 1rem; }
+              .v5-pricing-box { background: #F8FAFC; border-radius: 8px; padding: 0.75rem; margin-bottom: 1rem; }
+              .v5-curr-price { font-size: 1.4rem; font-weight: 900; color: #0F172A; }
+              .v5-old-price { font-size: 0.85rem; text-decoration: line-through; color: #94A3B8; margin-left: 0.4rem; }
+              .v5-cta-btn { width: 100%; background: #DC2626; color: white; padding: 0.8rem; border-radius: 8px; font-weight: 800; font-size: 0.9rem; border: none; cursor: pointer; }
+              .v5-cta-btn:hover { background: #B91C1C; }
+            </style>
+
+            <!-- Ticker -->
+            <div class="v5-ticker">
+              🔥 AIRPORT ROAD KITCHEN ACTIVE: ONLY 4 DELIVERY SLOTS LEFT FOR TODAY IN BENIN CITY
+            </div>
+
+            <!-- Header -->
+            <header class="v5-header">
+              <div class="v5-brand" onclick="smoothScrollTo('v5-hero')">Cakesbynessahh</div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button style="padding: 0.45rem 0.9rem; background: transparent; border: 1px solid #CBD5E1; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;" onclick="smoothScrollTo('menu')">Menu</button>
+                <button style="padding: 0.45rem 0.9rem; background: transparent; border: 1px solid #CBD5E1; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;" onclick="smoothScrollTo('custom-studio')">Custom Studio</button>
+                <button style="padding: 0.45rem 1rem; background: #DC2626; color: white; border: none; border-radius: 6px; font-weight: 800; font-size: 0.8rem; cursor: pointer;" onclick="smoothScrollTo('menu')">Claim Cake Slot</button>
+              </div>
+            </header>
+
+            <!-- Hero Section with Proof -->
+            <section class="v5-hero" id="v5-hero">
+              <div class="v5-hero-inner">
+                <div class="v5-stars">★★★★★ 4.9/5 Rating (380+ Benin City Celebrations)</div>
+                <h1>Delicious Handcrafted Cakes Delivered To Your Doorstep</h1>
+                <p>Order with complete confidence. We send you a high-definition photo on WhatsApp before our rider departs Airport Road.</p>
+                
+                <div class="v5-trust-strip">
+                  <div class="v5-badge-pill">🛡️ Pay on Delivery Available</div>
+                  <div class="v5-badge-pill">📸 WhatsApp Photo Pre-Dispatch</div>
+                  <div class="v5-badge-pill">⚡ Airport Road Same-Day Pickup</div>
+                </div>
+              </div>
+            </section>
+
+            <main class="v5-container">
+              <div id="menu">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                  <h2 style="font-size: 1.5rem; font-weight: 900;">Choose Your Celebration Package</h2>
+                  <span style="font-size: 0.85rem; font-weight: 700; color: #DC2626;">⏰ Closes at 4:00 PM</span>
+                </div>
+
+                <div class="v5-matrix-grid">
+                  <!-- Card 1 -->
+                  <div class="v5-card">
+                    <div>
+                      <img src="${BAKERY_DATA[0].image}" alt="${BAKERY_DATA[0].name}" class="v5-card-img proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                      <div class="v5-dim-tag">${BAKERY_DATA[0].size}</div>
+                      <h3 class="v5-title">${BAKERY_DATA[0].name}</h3>
+                      <p class="v5-desc">${BAKERY_DATA[0].desc}</p>
+                    </div>
+                    <div>
+                      <div class="v5-pricing-box">
+                        <span class="v5-curr-price">${BAKERY_DATA[0].price}</span>
+                        <span class="v5-old-price">₦32,000</span>
+                        <div style="font-size: 0.75rem; color: #059669; font-weight: 700; margin-top: 0.2rem;">Save ₦4,000 Today</div>
+                      </div>
+                      <button class="v5-cta-btn" onclick="showToast('Slot reserved for Red Velvet!')">Claim This Cake Slot</button>
+                    </div>
+                  </div>
+
+                  <!-- Card 2 (Featured) -->
+                  <div class="v5-card v5-featured-card">
+                    <span class="v5-ribbon">Most Popular in GRA</span>
+                    <div>
+                      <img src="${BAKERY_DATA[1].image}" alt="${BAKERY_DATA[1].name}" class="v5-card-img proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                      <div class="v5-dim-tag">${BAKERY_DATA[1].size}</div>
+                      <h3 class="v5-title">${BAKERY_DATA[1].name}</h3>
+                      <p class="v5-desc">${BAKERY_DATA[1].desc}</p>
+                    </div>
+                    <div>
+                      <div class="v5-pricing-box">
+                        <span class="v5-curr-price">${BAKERY_DATA[1].price}</span>
+                        <span class="v5-old-price">₦48,000</span>
+                        <div style="font-size: 0.75rem; color: #059669; font-weight: 700; margin-top: 0.2rem;">Save ₦6,000 Today</div>
+                      </div>
+                      <button class="v5-cta-btn" style="background: #991B1B;" onclick="showToast('Slot reserved for Deluxe Cake!')">Claim This Cake Slot</button>
+                    </div>
+                  </div>
+
+                  <!-- Card 3 -->
+                  <div class="v5-card">
+                    <div>
+                      <img src="${BAKERY_DATA[2].image}" alt="${BAKERY_DATA[2].name}" class="v5-card-img proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                      <div class="v5-dim-tag">${BAKERY_DATA[2].size}</div>
+                      <h3 class="v5-title">${BAKERY_DATA[2].name}</h3>
+                      <p class="v5-desc">${BAKERY_DATA[2].desc}</p>
+                    </div>
+                    <div>
+                      <div class="v5-pricing-box">
+                        <span class="v5-curr-price">${BAKERY_DATA[2].price}</span>
+                        <span class="v5-old-price">₦62,000</span>
+                        <div style="font-size: 0.75rem; color: #059669; font-weight: 700; margin-top: 0.2rem;">Save ₦8,000 Today</div>
+                      </div>
+                      <button class="v5-cta-btn" onclick="showToast('Slot reserved for Grand Tier!')">Claim This Cake Slot</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Custom Cake Fast Action -->
+              <section id="custom-studio" style="margin-top: 3.5rem; background: #FFF1F2; border: 2px solid #FECDD3; border-radius: 12px; padding: 2rem;">
+                <h3 style="font-size: 1.3rem; font-weight: 900; color: #881337;">Need a Custom Piped Wording?</h3>
+                <p style="font-size: 0.9rem; color: #9F1239; margin-top: 0.2rem;">Tell us your message and delivery address in Benin City. No hidden fees.</p>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                  <input type="text" placeholder="Your Piped Inscription" value="Happy Birthday Daddy!" style="flex: 1; padding: 0.8rem; border-radius: 8px; border: 1px solid #FECDD3; font-size: 0.95rem;">
+                  <button class="v5-cta-btn" style="width: auto; padding: 0.8rem 1.8rem;" onclick="window.open('https://wa.me/2349059340229?text=Hello%20Cakesbynessahh%2C%20I%20want%20to%20lock%20in%20my%20delivery%20slot%20now')">Lock In My Delivery Slot</button>
+                </div>
+              </section>
+            </main>
+          </div>
+        `;
+      },
+
+      /* ------------------------------------------------------------------------
+         VARIANT 6: Dark Cocoa
+         High-end luxury patisserie layout, dark background, gold/terracotta typography,
+         full-width showcase cards for celebration tier cakes, VIP custom links.
+         ------------------------------------------------------------------------ */
+      function variantDarkCocoa() {
+        return `
+          <div class="motion-fade-up" style="background: #140E0C; color: #F5EBE1; min-height: 100vh;">
+            <style>
+              .v6-header { position: sticky; top: 0; z-index: 50; background: rgba(20,14,12,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid #2B1D19; padding: 1.25rem 2.5rem; display: flex; align-items: center; justify-content: space-between; }
+              .v6-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: #E5A962; cursor: pointer; }
+              .v6-nav { display: flex; gap: 1.5rem; align-items: center; font-size: 0.85rem; font-weight: 600; }
+              .v6-nav a { color: #A89890; text-decoration: none; cursor: pointer; transition: color 150ms; }
+              .v6-nav a:hover { color: #E5A962; }
+              .v6-vip-btn { border: 1px solid #E5A962; background: transparent; color: #E5A962; padding: 0.45rem 1.1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
+              
+              .v6-hero { max-width: 900px; margin: 0 auto; padding: 4.5rem 1.5rem 3rem; text-align: center; }
+              .v6-hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.3rem, 5vw, 3.8rem); font-weight: 700; color: #FFFFFF; line-height: 1.15; }
+              .v6-hero p { font-size: 1.05rem; color: #B3A299; margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+              
+              .v6-container { max-width: 1050px; margin: 0 auto; padding: 1rem 1.5rem 5rem; }
+              
+              /* Full-Width Showcase Cards */
+              .v6-showcase-card { background: #1F1614; border: 1px solid #362621; border-radius: 12px; overflow: hidden; margin-bottom: 2.5rem; display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+              @media (max-width: 780px) { .v6-showcase-card { grid-template-columns: 1fr; } }
+              
+              .v6-card-media { position: relative; height: 100%; min-height: 280px; }
+              .v6-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+              .v6-card-body { padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+              .v6-vip-kicker { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: #E5A962; font-weight: 700; }
+              .v6-card-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.75rem; color: #FFFFFF; margin: 0.4rem 0 0.8rem; }
+              .v6-card-desc { font-size: 0.9rem; color: #B3A299; line-height: 1.6; }
+              .v6-tasting-gold { border-left: 2px solid #E5A962; padding-left: 0.85rem; font-size: 0.85rem; color: #E5A962; margin: 1.25rem 0; font-style: italic; }
+              .v6-card-price { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; color: #FFFFFF; }
+              .v6-gold-btn { background: #E5A962; color: #140E0C; border: none; padding: 0.75rem 1.8rem; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 4px; cursor: pointer; }
+              .v6-gold-btn:hover { background: #D49852; }
+            </style>
+
+            <header class="v6-header">
+              <div class="v6-brand" onclick="smoothScrollTo('v6-hero')">Cakesbynessahh • Cocoa Patisserie</div>
+              <nav class="v6-nav">
+                <a onclick="smoothScrollTo('menu')">Tier Cakes</a>
+                <a onclick="smoothScrollTo('custom-studio')">Private Commission</a>
+                <button class="v6-vip-btn" onclick="smoothScrollTo('custom-studio')">Concierge</button>
+              </nav>
+            </header>
+
+            <div class="v6-hero" id="v6-hero">
+              <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.2em; color: #E5A962; font-weight: 700;">Midnight Luxury &amp; Sugarcraft</span>
+              <h1>Artisan Tier Cakes for Rare Celebrations</h1>
+              <p>Belgian dark chocolate ganache, hand-whipped vanilla bean mousseline, and custom sugar artistry handcrafted in Benin City.</p>
+            </div>
+
+            <main class="v6-container">
+              <div id="menu">
+                <!-- Showcase 1 -->
+                <article class="v6-showcase-card">
+                  <div class="v6-card-media">
+                    <img src="${BAKERY_DATA[2].image}" alt="${BAKERY_DATA[2].name}" class="proto-img-skeleton-dark" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                  </div>
+                  <div class="v6-card-body">
+                    <div>
+                      <span class="v6-vip-kicker">VIP Reserve Tier • ${BAKERY_DATA[2].size}</span>
+                      <h2 class="v6-card-title">${BAKERY_DATA[2].name}</h2>
+                      <p class="v6-card-desc">${BAKERY_DATA[2].desc}</p>
+                      <div class="v6-tasting-gold">Notes: ${BAKERY_DATA[2].notes}</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                      <span class="v6-card-price">${BAKERY_DATA[2].price}</span>
+                      <button class="v6-gold-btn" onclick="showToast('Commission initialized for Grand Party Tier')">Commission Tier</button>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Showcase 2 -->
+                <article class="v6-showcase-card">
+                  <div class="v6-card-media">
+                    <img src="${BAKERY_DATA[1].image}" alt="${BAKERY_DATA[1].name}" class="proto-img-skeleton-dark" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                  </div>
+                  <div class="v6-card-body">
+                    <div>
+                      <span class="v6-vip-kicker">Grand Celebration • ${BAKERY_DATA[1].size}</span>
+                      <h2 class="v6-card-title">${BAKERY_DATA[1].name}</h2>
+                      <p class="v6-card-desc">${BAKERY_DATA[1].desc}</p>
+                      <div class="v6-tasting-gold">Notes: ${BAKERY_DATA[1].notes}</div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+                      <span class="v6-card-price">${BAKERY_DATA[1].price}</span>
+                      <button class="v6-gold-btn" onclick="showToast('Commission initialized for Deluxe Cake')">Commission Tier</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- VIP Private Commission Section -->
+              <section id="custom-studio" style="background: #1B1311; border: 1px solid #362621; border-radius: 12px; padding: 3rem; margin-top: 3rem; text-align: center;">
+                <span class="v6-vip-kicker">Bespoke Concierge</span>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: #FFFFFF; margin: 0.5rem 0 1rem;">Private Wedding &amp; Gala Inquiries</h3>
+                <p style="font-size: 0.95rem; color: #B3A299; max-width: 600px; margin: 0 auto 2rem;">Private tasting consultations for weddings, state banquets, and multi-tier celebrations across Edo State. Direct telephone consultation with our head cake decorator.</p>
+                <button class="v6-gold-btn" onclick="window.open('https://wa.me/2349059340229?text=Hello%20Cakesbynessahh%2C%20I%20would%20like%20to%20inquire%20about%20a%20private%20luxury%20cake%20commission')">Open Concierge WhatsApp</button>
+              </section>
+            </main>
+          </div>
+        `;
+      },
+
+      /* ------------------------------------------------------------------------
+         VARIANT 7: Yefepere Empirical
+         Exact empirical model from Benin City competitors (yefepere.com & Cake Island).
+         Neighborhood routing selectors (Airport Road, GRA, Ugbowo), explicit dimensions
+         (8 × 5 inches, Serves 8-12), 3-col grid, and 45px pill buttons.
+         ------------------------------------------------------------------------ */
+      function variantYefepereEmpirical() {
+        return `
+          <div class="motion-fade-up" style="background: #FFFFFF; color: #212529; min-height: 100vh;">
+            <style>
+              .v7-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid #E9ECEF; padding: 1rem 3rem; display: flex; align-items: center; justify-content: space-between; }
+              .v7-brand { font-family: 'Inter', sans-serif; font-size: 1.35rem; font-weight: 800; color: #8E1633; cursor: pointer; }
+              .v7-nav-links { display: flex; gap: 1.5rem; align-items: center; }
+              .v7-nav-links a { color: #495057; font-weight: 600; font-size: 0.9rem; text-decoration: none; cursor: pointer; }
+              .v7-nav-links a:hover { color: #8E1633; }
+              
+              .v7-hero { padding: 3.5rem 1.5rem 2.5rem; text-align: center; max-width: 800px; margin: 0 auto; }
+              .v7-hero h1 { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 800; line-height: 1.2; color: #212529; }
+              .v7-hero p { font-size: 1rem; color: #6C757D; margin-top: 0.6rem; }
+              
+              /* Neighborhood Routing Selectors Bar */
+              .v7-routing-bar { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+              .v7-zone-chip { padding: 0.45rem 1rem; border-radius: 25px; font-size: 0.8rem; font-weight: 700; border: 1px solid #DEE2E6; background: #F8F9FA; color: #495057; cursor: pointer; transition: all 150ms; }
+              .v7-zone-chip.active, .v7-zone-chip:hover { background: #8E1633; color: white; border-color: #8E1633; }
+              
+              .v7-container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 2rem 5rem; }
+              
+              /* Yefepere Empirical 3-Column Grid with 32px Gap */
+              .v7-empirical-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+              @media (max-width: 960px) { .v7-empirical-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; } }
+              @media (max-width: 640px) { .v7-empirical-grid { grid-template-columns: 1fr; gap: 16px; } }
+              
+              .v7-card { background: #FFFFFF; border: 1px solid #E9ECEF; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; transition: transform 200ms ease, box-shadow 200ms ease; }
+              .v7-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+              .v7-card-img { width: 100%; height: 210px; object-fit: cover; }
+              .v7-card-body { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; }
+              .v7-dim-pill { display: inline-block; background: #F8F9FA; border: 1px solid #E9ECEF; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; color: #8E1633; margin-bottom: 0.5rem; align-self: flex-start; }
+              .v7-card-title { font-size: 1.15rem; font-weight: 700; color: #212529; margin-bottom: 0.35rem; }
+              .v7-card-desc { font-size: 0.85rem; color: #6C757D; line-height: 1.5; margin-bottom: 0.75rem; flex: 1; }
+              .v7-dispatch-timeline { font-size: 0.75rem; color: #198754; font-weight: 600; margin-bottom: 0.85rem; }
+              
+              .v7-card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #F1F3F5; padding-top: 0.85rem; margin-top: auto; }
+              .v7-price { font-size: 1.25rem; font-weight: 800; color: #212529; }
+              
+              /* Exact 45px pill button with 25px border-radius from Yefepere inspection */
+              .v7-btn { height: 45px; padding: 0 22px; border-radius: 25px; background: #8E1633; color: #FFFFFF; font-weight: 700; font-size: 0.85rem; border: none; cursor: pointer; transition: background 180ms ease, transform 150ms ease; display: inline-flex; align-items: center; justify-content: center; }
+              .v7-btn:active { transform: scale(0.97); }
+              .v7-btn:hover { background: #731027; }
+            </style>
+
+            <header class="v7-header">
+              <div class="v7-brand" onclick="smoothScrollTo('v7-hero')">Cakesbynessahh</div>
+              <div class="v7-nav-links">
+                <a onclick="smoothScrollTo('menu')">Menu Grid</a>
+                <a onclick="smoothScrollTo('custom-studio')">Custom Order</a>
+                <a onclick="smoothScrollTo('v7-trust')">Delivery Terms</a>
+              </div>
+            </header>
+
+            <div class="v7-hero" id="v7-hero">
+              <h1>Benin City Empirical Bakery Catalog</h1>
+              <p>Transparent pricing, exact imperial dimensions, and verified neighborhood dispatch across Edo State.</p>
+              
+              <!-- Neighborhood routing chips -->
+              <div class="v7-routing-bar">
+                <span class="v7-zone-chip active" onclick="v7SelectZone(this, 'All Benin Areas')">All Benin Areas</span>
+                <span class="v7-zone-chip" onclick="v7SelectZone(this, 'Airport Road Kitchen (Direct Pickup)')">Airport Road (Direct Kitchen)</span>
+                <span class="v7-zone-chip" onclick="v7SelectZone(this, 'GRA & Boundary Rd')">GRA &amp; Boundary Rd</span>
+                <span class="v7-zone-chip" onclick="v7SelectZone(this, 'Ugbowo & UNIBEN')">Ugbowo &amp; UNIBEN</span>
+                <span class="v7-zone-chip" onclick="v7SelectZone(this, 'Sapele Rd & Aduwawa')">Sapele Rd &amp; Aduwawa</span>
+              </div>
+            </div>
+
+            <main class="v7-container">
+              <div id="menu">
+                <div class="v7-empirical-grid">
+                  ${BAKERY_DATA.map(item => `
+                    <div class="v7-card">
+                      <img src="${item.image}" alt="${item.name}" class="v7-card-img proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                      <div class="v7-card-body">
+                        <span class="v7-dim-pill">${item.size}</span>
+                        <h3 class="v7-card-title">${item.name}</h3>
+                        <p class="v7-card-desc">${item.desc}</p>
+                        <div class="v7-dispatch-timeline">Prep: 4 hrs • Transit to GRA: ~25 mins</div>
+                        <div class="v7-card-footer">
+                          <span class="v7-price">${item.price}</span>
+                          <button class="v7-btn" onclick="showToast('Order initiated for ${item.name}')">Order Now</button>
+                        </div>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Custom Studio & Delivery Terms -->
+              <section id="custom-studio" style="margin-top: 4rem; background: #F8F9FA; border: 1px solid #DEE2E6; border-radius: 12px; padding: 2rem;">
+                <h3 style="font-size: 1.3rem; font-weight: 800; color: #212529;">Custom Cake Specification</h3>
+                <p style="font-size: 0.9rem; color: #6C757D; margin-top: 0.25rem;">Standard 24-hour advance ordering for celebration sizes 8, 10, and 12 inches.</p>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                  <input type="text" value="Happy 25th Wedding Anniversary!" style="flex: 1; padding: 0.75rem 1rem; border-radius: 25px; border: 1px solid #CED4DA; font-size: 0.9rem;">
+                  <button class="v7-btn" onclick="window.open('https://wa.me/2349059340229?text=Hello%20Cakesbynessahh%2C%20I%20want%20to%20order%20a%20custom%20cake%20in%20Benin%20City')">Order via WhatsApp</button>
+                </div>
+              </section>
+
+              <div id="v7-trust" style="margin-top: 3rem; text-align: center; font-size: 0.85rem; color: #6C757D;">
+                <p>📍 Kitchen Location: Airport Road, Benin City, Edo State • 📞 Phone: +234 905 934 0229</p>
+                <p style="margin-top: 0.3rem;">✓ Pay on delivery available with initial confirmation deposit.</p>
+              </div>
+            </main>
+          </div>
+        `;
+      },
+
+      /* ------------------------------------------------------------------------
+         VARIANT 8: Dual Stream
+         Paged dual-stream layout with two distinct sections:
+         Stream A: Celebration Cakes (24h Pre-Order) vs Stream B: Fresh Daily Bakes (Same-Day).
+         ------------------------------------------------------------------------ */
+      function variantDualStream() {
+        return `
+          <div class="motion-fade-up" style="background: #FAF7F2; color: #1E1B18; min-height: 100vh;">
+            <style>
+              .v8-header { position: sticky; top: 0; z-index: 50; background: rgba(250,247,242,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid #E5DFD7; padding: 0.85rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+              .v8-brand { font-size: 1.3rem; font-weight: 800; color: #8E1633; cursor: pointer; }
+              
+              /* Dual Stream Quick Jump Nav */
+              .v8-stream-tabs { display: flex; gap: 0.5rem; background: #ECE6DC; padding: 4px; border-radius: 999px; }
+              .v8-tab-btn { padding: 0.4rem 1.1rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700; border: none; cursor: pointer; transition: all 150ms; background: transparent; color: #5C554E; }
+              .v8-tab-btn.active { background: #8E1633; color: white; }
+              .v8-tab-btn.stream-b { background: transparent; }
+              .v8-tab-btn.stream-b.active { background: #B45309; color: white; }
+              
+              .v8-hero { text-align: center; padding: 3rem 1.5rem 2rem; max-width: 800px; margin: 0 auto; }
+              .v8-hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; line-height: 1.2; }
+              .v8-hero p { font-size: 1rem; color: #665E55; margin-top: 0.5rem; }
+              
+              .v8-container { max-width: 1100px; margin: 0 auto; padding: 1rem 1.5rem 5rem; }
+              
+              /* Stream A Container */
+              .v8-stream-block { border-radius: 16px; padding: 2rem; margin-bottom: 3.5rem; }
+              .v8-stream-a { background: #FFF0F2; border: 1px solid #FBCFE8; }
+              .v8-stream-b { background: #FEF3C7; border: 1px solid #FDE68A; }
+              
+              .v8-stream-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
+              .v8-stream-tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 999px; }
+              .v8-tag-a { background: #8E1633; color: white; }
+              .v8-tag-b { background: #B45309; color: white; }
+              
+              .v8-stream-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+              @media (max-width: 850px) { .v8-stream-grid { grid-template-columns: 1fr; } }
+              
+              .v8-stream-card { background: #FFFFFF; border-radius: 12px; overflow: hidden; padding: 1rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+              .v8-stream-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem; }
+            </style>
+
+            <header class="v8-header">
+              <div class="v8-brand" onclick="smoothScrollTo('v8-hero')">Cakesbynessahh Dual Stream</div>
+              <div class="v8-stream-tabs">
+                <button class="v8-tab-btn active" onclick="v8SelectStream(this, 'stream-a')">🎂 Stream A: 24h Cakes</button>
+                <button class="v8-tab-btn stream-b" onclick="v8SelectStream(this, 'stream-b')">⚡ Stream B: Same-Day Bakes</button>
+              </div>
+            </header>
+
+            <div class="v8-hero" id="v8-hero">
+              <h1>Two Dedicated Bakery Streams</h1>
+              <p>Choose between customized celebration tier cakes with 24h advance preparation, or instant same-day oven batches dispatched from Airport Road.</p>
+            </div>
+
+            <main class="v8-container">
+              <!-- STREAM A: 24h Pre-Order Celebration Cakes -->
+              <section id="stream-a" class="v8-stream-block v8-stream-a">
+                <div id="custom-studio"></div>
+                <div class="v8-stream-header">
+                  <div>
+                    <span class="v8-stream-tag v8-tag-a">Stream A • 24h Notice</span>
+                    <h2 style="font-size: 1.6rem; font-weight: 800; color: #831843; margin-top: 0.35rem;">Bespoke Celebration Cakes</h2>
+                  </div>
+                  <span style="font-size: 0.85rem; font-weight: 700; color: #831843;">📅 Booking for Tomorrow &amp; Weekend</span>
+                </div>
+
+                <div class="v8-stream-grid">
+                  ${BAKERY_DATA.slice(0, 3).map(item => `
+                    <div class="v8-stream-card">
+                      <img src="${item.image}" alt="${item.name}" class="proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                      <div>
+                        <span style="font-size: 0.75rem; font-weight: 700; color: #8E1633;">${item.size}</span>
+                        <h4 style="font-size: 1.05rem; font-weight: 800; margin: 0.2rem 0;">${item.name}</h4>
+                        <p style="font-size: 0.8rem; color: #64748B;">${item.desc}</p>
+                      </div>
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; border-top: 1px solid #F1F5F9; padding-top: 0.6rem;">
+                        <span style="font-weight: 800; font-size: 1.15rem; color: #8E1633;">${item.price}</span>
+                        <button style="padding: 0.45rem 0.9rem; background: #8E1633; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;" onclick="showToast('Selected ${item.name} for 24h preorder')">Pre-Order</button>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </section>
+
+              <!-- STREAM B: Fresh Daily Bakes & Chops (Instant Same-Day Dispatch) -->
+              <section id="stream-b" class="v8-stream-block v8-stream-b">
+                <div id="menu"></div>
+                <div class="v8-stream-header">
+                  <div>
+                    <span class="v8-stream-tag v8-tag-b">Stream B • Instant Dispatch</span>
+                    <h2 style="font-size: 1.6rem; font-weight: 800; color: #92400E; margin-top: 0.35rem;">Fresh Daily Bakes &amp; Chops</h2>
+                  </div>
+                  <span style="font-size: 0.85rem; font-weight: 700; color: #92400E;">⚡ Oven Batch #3 Fresh Now (35m Pickup)</span>
+                </div>
+
+                <div class="v8-stream-grid">
+                  ${BAKERY_DATA.slice(3, 7).map(item => `
+                    <div class="v8-stream-card">
+                      <img src="${item.image}" alt="${item.name}" class="proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                      <div>
+                        <span style="font-size: 0.75rem; font-weight: 700; color: #B45309;">${item.size}</span>
+                        <h4 style="font-size: 1.05rem; font-weight: 800; margin: 0.2rem 0;">${item.name}</h4>
+                        <p style="font-size: 0.8rem; color: #64748B;">${item.desc}</p>
+                      </div>
+                      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; border-top: 1px solid #F1F5F9; padding-top: 0.6rem;">
+                        <span style="font-weight: 800; font-size: 1.15rem; color: #B45309;">${item.price}</span>
+                        <button style="padding: 0.45rem 0.9rem; background: #B45309; color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer;" onclick="showToast('Dispatched ${item.name} for same-day!')">Instant Order</button>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </section>
+            </main>
+          </div>
+        `;
+      },
+
+      /* ------------------------------------------------------------------------
+         VARIANT 9: Mobile App-Shell
+         Native mobile app interface, circular category story bubbles at top,
+         bottom navigation bar, and slide-up sheet drawers for pastry details.
+         ------------------------------------------------------------------------ */
+      function variantMobileAppShell() {
+        return `
+          <div class="motion-fade-up" style="background: #F1F5F9; min-height: 100vh; display: flex; justify-content: center;">
+            <style>
+              .v9-app-frame { width: 100%; max-width: 480px; background: #FFFFFF; min-height: 100vh; box-shadow: 0 0 40px rgba(0,0,0,0.1); position: relative; padding-bottom: 75px; }
+              .v9-status-bar { padding: 0.6rem 1.25rem 0.4rem; display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; color: #64748B; border-bottom: 1px solid #F1F5F9; }
+              
+              .v9-top-header { padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+              .v9-app-brand { font-size: 1.2rem; font-weight: 800; color: #8E1633; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; }
+              
+              /* Circular Category Story Bubbles */
+              .v9-stories-strip { display: flex; gap: 1rem; overflow-x: auto; padding: 0.5rem 1.25rem 1rem; scrollbar-width: none; }
+              .v9-stories-strip::-webkit-scrollbar { display: none; }
+              .v9-story-bubble { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; cursor: pointer; flex-shrink: 0; }
+              .v9-ring { width: 62px; height: 62px; border-radius: 50%; padding: 2px; background: linear-gradient(45deg, #F43F5E, #FB923C, #8E1633); display: flex; align-items: center; justify-content: center; }
+              .v9-avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #FFFFFF; }
+              .v9-story-label { font-size: 0.7rem; font-weight: 700; color: #334155; }
+              
+              /* App Feed Cards */
+              .v9-feed-container { padding: 0.5rem 1.25rem 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+              .v9-feed-card { background: #FFFFFF; border-radius: 14px; border: 1px solid #E2E8F0; overflow: hidden; }
+              .v9-feed-img { width: 100%; height: 210px; object-fit: cover; }
+              .v9-feed-body { padding: 1rem; }
+              .v9-feed-title { font-size: 1.05rem; font-weight: 800; color: #0F172A; }
+              .v9-feed-dim { font-size: 0.75rem; color: #8E1633; font-weight: 700; margin: 0.2rem 0 0.4rem; }
+              .v9-feed-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; border-top: 1px solid #F1F5F9; padding-top: 0.6rem; }
+              .v9-feed-price { font-size: 1.2rem; font-weight: 800; color: #0F172A; }
+              .v9-view-sheet-btn { background: #8E1633; color: white; border: none; padding: 0.45rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.8rem; cursor: pointer; }
+              
+              /* Bottom App Nav Bar */
+              .v9-bottom-bar { position: fixed; bottom: 0; width: 100%; max-width: 480px; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); border-top: 1px solid #E2E8F0; display: flex; justify-content: space-around; padding: 0.6rem 0; z-index: 40; }
+              .v9-tab { display: flex; flex-direction: column; align-items: center; gap: 0.15rem; font-size: 0.65rem; font-weight: 700; color: #64748B; border: none; background: transparent; cursor: pointer; }
+              .v9-tab.active { color: #8E1633; }
+              
+              /* Slide-Up Sheet Drawer - iOS Curve */
+              .v9-sheet-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; opacity: 0; pointer-events: none; transition: opacity 220ms ease; display: flex; justify-content: center; align-items: flex-end; }
+              .v9-sheet-overlay.active { opacity: 1; pointer-events: auto; }
+              .v9-sheet-content { width: 100%; max-width: 480px; background: #FFFFFF; border-radius: 20px 20px 0 0; padding: 1.5rem; transform: translateY(100%); transition: transform 260ms var(--ease-drawer); position: relative; }
+              .v9-sheet-overlay.active .v9-sheet-content { transform: translateY(0); }
+              .v9-sheet-close { position: absolute; top: 1rem; right: 1.25rem; background: #F1F5F9; border: none; border-radius: 50%; width: 28px; height: 28px; font-weight: 700; color: #64748B; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+            </style>
+
+            <div class="v9-app-frame">
+              <!-- Top Status -->
+              <div class="v9-status-bar">
+                <span>9:41</span>
+                <span>Airport Rd Kitchen • Open Now</span>
+                <span>100%</span>
+              </div>
+
+              <!-- Brand Header -->
+              <div class="v9-top-header">
+                <div class="v9-app-brand" onclick="smoothScrollTo('v9-stories')">
+                  <span>🎂</span> Cakesbynessahh
+                </div>
+                <div style="font-size: 0.75rem; background: #F1F5F9; padding: 0.3rem 0.6rem; border-radius: 999px; font-weight: 700;">
+                  Benin City
+                </div>
+              </div>
+
+              <!-- Circular Category Story Bubbles -->
+              <div class="v9-stories-strip" id="v9-stories">
+                <div class="v9-story-bubble" onclick="smoothScrollTo('menu')">
+                  <div class="v9-ring"><img src="${BAKERY_DATA[0].image}" class="v9-avatar" alt="Cakes"></div>
+                  <span class="v9-story-label">Cakes</span>
+                </div>
+                <div class="v9-story-bubble" onclick="smoothScrollTo('menu')">
+                  <div class="v9-ring"><img src="${BAKERY_DATA[3].image}" class="v9-avatar" alt="Bento"></div>
+                  <span class="v9-story-label">Bento</span>
+                </div>
+                <div class="v9-story-bubble" onclick="smoothScrollTo('menu')">
+                  <div class="v9-ring"><img src="${BAKERY_DATA[6].image}" class="v9-avatar" alt="Parfaits"></div>
+                  <span class="v9-story-label">Parfaits</span>
+                </div>
+                <div class="v9-story-bubble" onclick="smoothScrollTo('menu')">
+                  <div class="v9-ring"><img src="${BAKERY_DATA[4].image}" class="v9-avatar" alt="Pastries"></div>
+                  <span class="v9-story-label">Pastries</span>
+                </div>
+                <div class="v9-story-bubble" onclick="smoothScrollTo('menu')">
+                  <div class="v9-ring"><img src="${BAKERY_DATA[5].image}" class="v9-avatar" alt="Chops"></div>
+                  <span class="v9-story-label">Chops</span>
+                </div>
+              </div>
+
+              <!-- Feed Items -->
+              <div class="v9-feed-container" id="menu">
+                <div style="font-size: 0.85rem; font-weight: 800; color: #475569;">Featured Daily Bakes</div>
+
+                ${BAKERY_DATA.slice(0, 5).map(item => `
+                  <div class="v9-feed-card">
+                    <img src="${item.image}" alt="${item.name}" class="v9-feed-img proto-img-skeleton" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_IMG}'">
+                    <div class="v9-feed-body">
+                      <div class="v9-feed-dim">${item.size}</div>
+                      <h4 class="v9-feed-title">${item.name}</h4>
+                      <p style="font-size: 0.8rem; color: #64748B; margin-top: 0.2rem;">${item.desc}</p>
+                      <div class="v9-feed-footer">
+                        <span class="v9-feed-price">${item.price}</span>
+                        <button class="v9-view-sheet-btn" onclick="v9OpenSheet('${item.name}', '${item.price}', '${item.size}')">Quick Tap</button>
+                      </div>
+                    </div>
+                  </div>
+                `).join('')}
+
+                <!-- Custom Studio in Feed -->
+                <div id="custom-studio" style="background: #FFF1F2; border: 1px solid #FECDD3; border-radius: 14px; padding: 1.25rem;">
+                  <h4 style="font-weight: 800; color: #881337;">Custom Cake Inscription</h4>
+                  <p style="font-size: 0.75rem; color: #9F1239; margin-top: 0.2rem;">Write your custom wording for Airport Road pickup.</p>
+                  <input type="text" placeholder="e.g. Happy Birthday Blessing" value="Happy Birthday Blessing" style="width: 100%; padding: 0.6rem; margin: 0.6rem 0; border: 1px solid #FECDD3; border-radius: 6px; font-size: 0.85rem;">
+                  <button class="v9-view-sheet-btn" style="width: 100%;" onclick="showToast('Saved custom inscription!')">Save Custom Cake</button>
+                </div>
+              </div>
+
+              <!-- App Bottom Tab Bar -->
+              <div class="v9-bottom-bar">
+                <button class="v9-tab active" onclick="smoothScrollTo('v9-stories')"><span>🏠</span><span>Feed</span></button>
+                <button class="v9-tab" onclick="smoothScrollTo('menu')"><span>🍰</span><span>Menu</span></button>
+                <button class="v9-tab" onclick="smoothScrollTo('custom-studio')"><span>🎨</span><span>Studio</span></button>
+                <button class="v9-tab" onclick="showToast('2 items in bag')"><span>🛍️</span><span>Bag (2)</span></button>
+              </div>
+
+              <!-- Slide-Up Sheet Drawer -->
+              <div class="v9-sheet-overlay" id="v9SheetOverlay" onclick="v9CloseSheet(event)">
+                <div class="v9-sheet-content" onclick="event.stopPropagation()">
+                  <button class="v9-sheet-close" onclick="v9CloseSheet()" aria-label="Close drawer">✕</button>
+                  <div style="width: 40px; height: 4px; background: #CBD5E1; border-radius: 999px; margin: 0 auto 1rem;"></div>
+                  <h3 id="v9SheetTitle" style="font-size: 1.25rem; font-weight: 800;">Cake Details</h3>
+                  <div id="v9SheetDim" style="font-size: 0.8rem; color: #8E1633; font-weight: 700; margin: 0.2rem 0 0.8rem;"></div>
+                  <div style="font-size: 1.4rem; font-weight: 800; color: #0F172A;" id="v9SheetPrice">₦28,000</div>
+                  <div style="background: #F8FAFC; border-radius: 8px; padding: 0.8rem; margin: 1rem 0; font-size: 0.8rem; color: #475569;">
+                    ✓ Pre-dispatch WhatsApp photo included<br>
+                    ✓ Pay on Delivery available in Benin City
+                  </div>
+                  <button style="width: 100%; padding: 0.85rem; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer;" onclick="window.open('https://wa.me/2349059340229?text=Hello%20Cakesbynessahh%2C%20I%20want%20to%20order%20from%20the%20app')">
+                    1-Tap WhatsApp Order
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+    ];
+
+    /* ==========================================================================
+       Interactive Event Helpers for Bespoke Studio (Variant 3), Zones (Variant 7),
+       Streams (Variant 8), & App Shell (Variant 9)
+       ========================================================================== */
+    window.v1FilterCategory = function(btn, cat) {
+      document.querySelectorAll('.v1-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      showToast('Category: ' + cat);
+      smoothScrollTo('menu');
+    };
+
+    window.v3SelectSize = function(el, dim, price) {
+      document.querySelectorAll('#v3SizeGroup .v3-chip').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      const pPrice = document.getElementById('v3PreviewPrice');
+      const pMeta = document.getElementById('v3PreviewMeta');
+      if (pPrice) pPrice.textContent = price;
+      if (pMeta) {
+        const parts = pMeta.textContent.split('•').map(s => s.trim());
+        pMeta.textContent = `${dim} • ${parts[1] || 'Red Velvet'}`;
+      }
+    };
+
+    window.v3ChangeFlavor = function(flavor) {
+      const pMeta = document.getElementById('v3PreviewMeta');
+      if (pMeta) {
+        const parts = pMeta.textContent.split('•').map(s => s.trim());
+        pMeta.textContent = `${parts[0] || 'Size 8 (8 x 5 in)'} • ${flavor}`;
+      }
+    };
+
+    window.v3UpdateInscription = function(val) {
+      const el = document.getElementById('v3LiveInscription');
+      if (el) el.textContent = val.trim() || 'Your Name / Message';
+    };
+
+    window.v7SelectZone = function(el, zone) {
+      document.querySelectorAll('.v7-zone-chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      showToast('Delivery zone: ' + zone);
+    };
+
+    window.v8SelectStream = function(btn, targetId) {
+      document.querySelectorAll('.v8-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      smoothScrollTo(targetId);
+    };
+
+    window.v9OpenSheet = function(name, price, dim) {
+      const overlay = document.getElementById('v9SheetOverlay');
+      const t = document.getElementById('v9SheetTitle');
+      const p = document.getElementById('v9SheetPrice');
+      const d = document.getElementById('v9SheetDim');
+      if (t) t.textContent = name;
+      if (p) p.textContent = price;
+      if (d) d.textContent = dim;
+      if (overlay) overlay.classList.add('active');
+    };
+
+    window.v9CloseSheet = function(e) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      const overlay = document.getElementById('v9SheetOverlay');
+      if (overlay) overlay.classList.remove('active');
+    };
+
+    /* ==========================================================================
+       PICKER REFERENCE WIRING (COPIED VERBATIM FROM PICKER.MD)
+       ========================================================================== */
+    const stage = document.getElementById('stage');
+    const picker = document.querySelector('.proto-picker');
+    const highlight = picker.querySelector('.proto-picker-highlight');
+    const items = [...picker.querySelectorAll('.proto-picker-item:not(.proto-picker-replay)')];
+    const replay = picker.querySelector('.proto-picker-replay');
+    let current = 0;
+
+    function moveHighlight() {
+      const el = items[current];
+      if (!el) return;
+      highlight.style.width = el.offsetWidth + 'px';
+      highlight.style.transform = `translateX(${el.offsetLeft}px)`;
+    }
+
+    function mount(i) {
+      stage.innerHTML = '';
+      // Clear first, render next frame, so entrance animations re-run.
+      requestAnimationFrame(() => { 
+        stage.innerHTML = variants[i](); 
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      });
+    }
+
+    function setActive(i) {
+      if (i < 0 || i >= variants.length) return;
+      current = i;
+      items.forEach((el, j) => {
+        el.toggleAttribute('data-active', j === i);
+        if (j === i) el.setAttribute('aria-current', 'true');
+        else el.removeAttribute('aria-current');
+      });
+      moveHighlight();
+      try {
+        const url = new URL(location);
+        url.searchParams.set('v', i + 1);
+        history.replaceState(null, '', url);
+      } catch (e) {
+        // Safe fallback for file:/// protocol where replaceState is restricted
+      }
+      mount(i);
+    }
+
+    items.forEach((el, i) => el.addEventListener('click', () => setActive(i)));
+    replay?.addEventListener('click', () => mount(current));
+    window.addEventListener('resize', moveHighlight);
+    window.addEventListener('load', moveHighlight);
+
+    document.addEventListener('keydown', (e) => {
+      if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const num = parseInt(e.key, 10);
+      if (num >= 1 && num <= variants.length) setActive(num - 1);
+      else if (e.key === 'ArrowRight') setActive((current + 1) % variants.length);
+      else if (e.key === 'ArrowLeft') setActive((current - 1 + variants.length) % variants.length);
+      else if (e.key === 'r' || e.key === 'R') mount(current);
+    });
+
+    setActive((parseInt(new URLSearchParams(location.search).get('v'), 10) || 1) - 1);
+    // Enable the slide only after first paint, so load doesn't animate.
+    requestAnimationFrame(() => requestAnimationFrame(() => picker.setAttribute('data-ready', '')));
+  </script>
+</body>
+</html>

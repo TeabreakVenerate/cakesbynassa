@@ -1,0 +1,880 @@
+{
+  "metadata": {
+    "project": "Cakesbynessahh Digital Bakery Storefront",
+    "framework": "Stanford STORM Multi-Perspective Competitive Analysis — Phase 1 Deep Architecture",
+    "generatedDate": "2026-09-16",
+    "totalSitesAnalyzed": 14,
+    "geographicDistribution": {
+      "edoStateTotal": 10,
+      "beninCity": 7,
+      "edoOutsideBenin": 3,
+      "restOfNigeria": 4
+    },
+    "nicheDistribution": {
+      "bakeriesAndConfectioneries": 10,
+      "percentageBakeries": "71.4%",
+      "dtcFoodAndLifestyleBrands": 4,
+      "percentageDtc": "28.6%"
+    }
+  },
+  "sites": [
+    {
+      "id": "site-01",
+      "name": "CC's Cakes & Crafts",
+      "location": {
+        "city": "Benin City",
+        "state": "Edo State",
+        "subregion": "GRA (Upper Adesuwa)",
+        "country": "Nigeria",
+        "tier": "Edo State - Benin City"
+      },
+      "niche": "Bakery / Cake Studio",
+      "urlPlaceholder": "https://ccscakesandcrafts-benin.ng",
+      "sitemapArchitecture": [
+        "/",
+        "/wedding-cakes",
+        "/celebration-gallery",
+        "/flavor-menu",
+        "/consultation-booking",
+        "/about-chef",
+        "/contact"
+      ],
+      "routingStructure": "Multi-page portfolio model with server-rendered gallery pages and client-side modal inquiry drawers.",
+      "menuPresentation": {
+        "style": "Visual-First Masonry Grid",
+        "columns": "3 columns desktop, 1 column mobile",
+        "segmentationLogic": "Occasion-driven (Weddings, Traditional Engagements, Milestone Anniversaries, Corporate Gala)",
+        "priceDisplay": "Quote on consultation for multi-tier; starting price tags for single tier"
+      },
+      "designPhilosophy": "Artisanal luxury sugarcraft and bridal prestige. Muted golds, generous whitespace, serif headings.",
+      "copywriting": {
+        "headlineFormula": "Occasion + Emotional Climax + Bespoke Craft",
+        "heroHeadline": "Crafting Unforgettable Memories, One Sugar Petal at a Time",
+        "subheadline": "Benin City's premier luxury wedding and bespoke cake studio in the heart of GRA. Tailored flavors baked for royalty.",
+        "primaryCTA": "Design Your Custom Cake",
+        "secondaryCTA": "Browse Portfolio"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "CC's Cakes & Crafts",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "No. 15 Upper Adesuwa, GRA",
+          "addressLocality": "Benin City",
+          "addressRegion": "Edo State",
+          "addressCountry": "NG"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "6.3176",
+          "longitude": "5.6145"
+        },
+        "priceRange": "₦₦₦",
+        "servesCuisine": "Custom Wedding Cakes, Sugar Craft, Celebration Pastries"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["custom wedding cakes Benin City", "luxury cake designer GRA Benin", "best birthday cakes Edo State"],
+        "localSeoTactics": "Neighborhood citation matching ('GRA Benin City'), high-resolution geotagged image metadata"
+      },
+      "colorPalette": {
+        "primary": "#8E1633",
+        "secondary": "#D4AF37",
+        "background": "#FAF7F2",
+        "surface": "#FFFFFF",
+        "text": "#241410",
+        "accent": "#F3E8EE"
+      }
+    },
+    {
+      "id": "site-02",
+      "name": "Royalduchess Cakes and Pastries",
+      "location": {
+        "city": "Benin City",
+        "state": "Edo State",
+        "subregion": "BDPA / Ugbowo",
+        "country": "Nigeria",
+        "tier": "Edo State - Benin City"
+      },
+      "niche": "Bakery / Confectionery",
+      "urlPlaceholder": "https://royalduchesscakes.com.ng",
+      "sitemapArchitecture": [
+        "/",
+        "/express-menu",
+        "/custom-orders",
+        "/small-chops",
+        "/cart",
+        "/contact"
+      ],
+      "routingStructure": "Single-Page Application (SPA) with tabbed category navigation and deep links to WhatsApp checkout.",
+      "menuPresentation": {
+        "style": "High-Density Card Grid",
+        "columns": "2 columns mobile, 4 columns desktop",
+        "segmentationLogic": "Price & Speed categories ('Under ₦15,000', 'Same Day Cakes', 'Party Pastries')",
+        "priceDisplay": "Bold red numeric price tags with instant '+ Add to Cart' triggers"
+      },
+      "designPhilosophy": "Speed-first, mobile-centric conversion funnel geared for rapid WhatsApp checkout and student/family birthday celebrations.",
+      "copywriting": {
+        "headlineFormula": "Freshness + Speed Guarantee + Local Closeness",
+        "heroHeadline": "Freshly Baked Daily in Benin City — Delivered In Hours",
+        "subheadline": "Order delicious buttercream cakes, rich chocolate drips, and party treats baked fresh this morning near Ugbowo.",
+        "primaryCTA": "Order on WhatsApp Now",
+        "secondaryCTA": "View Today's Batches"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Royalduchess Cakes and Pastries",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "13 Odiase St, BDPA, Ugbowo",
+          "addressLocality": "Benin City",
+          "addressRegion": "Edo State",
+          "addressCountry": "NG"
+        },
+        "priceRange": "₦₦",
+        "openingHours": "Mo-Sa 08:00-19:00"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["cakes delivery Ugbowo Benin", "cheap birthday cakes in Benin City", "same day cake delivery Edo"],
+        "localSeoTactics": "Targeting student campus corridors and residential delivery speed terms"
+      },
+      "colorPalette": {
+        "primary": "#9C1D36",
+        "secondary": "#ECA43B",
+        "background": "#FFFFFF",
+        "surface": "#FFF4F2",
+        "text": "#2B1619",
+        "accent": "#25D366"
+      }
+    },
+    {
+      "id": "site-03",
+      "name": "Grandeur Cakes & Events",
+      "location": {
+        "city": "Benin City",
+        "state": "Edo State",
+        "subregion": "St. Saviour / Sapele Road",
+        "country": "Nigeria",
+        "tier": "Edo State - Benin City"
+      },
+      "niche": "Bakery / Cake Studio",
+      "urlPlaceholder": "https://grandeurcakesbenin.com",
+      "sitemapArchitecture": [
+        "/",
+        "/bespoke-cakes",
+        "/wedding-suites",
+        "/dessert-tables",
+        "/pricing-guide",
+        "/tasting-sessions",
+        "/contact"
+      ],
+      "routingStructure": "Editorial multi-page structure with dedicated landing pages for wedding planners and corporate event managers.",
+      "menuPresentation": {
+        "style": "Curated Lookbook / Catalog",
+        "columns": "Alternating single-column hero features and 2-column detail breakdowns",
+        "segmentationLogic": "Tier-based and Flavor-profile based (Fondant Sculptures, Buttercream Textures, Dessert Tables)",
+        "priceDisplay": "Starting price tiers with comprehensive package breakdown"
+      },
+      "designPhilosophy": "Architectural grandiosity, clean typography, editorial minimalism.",
+      "copywriting": {
+        "headlineFormula": "Prestige + Sensory Distinction + Event Mastery",
+        "heroHeadline": "Where Architectural Elegance Meets Confectionery Mastery",
+        "subheadline": "Bespoke ceremonial cakes for grand weddings, anniversaries, and VIP celebrations across Edo State.",
+        "primaryCTA": "Request Bespoke Quote",
+        "secondaryCTA": "Explore Bridal Gallery"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Grandeur Cakes & Events",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "No. 12 Ekunwe Street, off St. Saviour Road",
+          "addressLocality": "Benin City",
+          "addressRegion": "Edo State",
+          "addressCountry": "NG"
+        },
+        "priceRange": "₦₦₦"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["luxury wedding cake baker Benin City", "grand celebration cakes Edo State", "bespoke sugarcraft Benin"],
+        "localSeoTactics": "High-authority event planner backlinks and structured FAQ schema on cake ordering lead times"
+      },
+      "colorPalette": {
+        "primary": "#5B0E2D",
+        "secondary": "#C5A059",
+        "background": "#FBF8F5",
+        "surface": "#FFFFFF",
+        "text": "#1F1417",
+        "accent": "#EAD9C9"
+      }
+    },
+    {
+      "id": "site-04",
+      "name": "Shugaddicts Cake Bakery",
+      "location": {
+        "city": "Benin City",
+        "state": "Edo State",
+        "subregion": "Airport Road Axis",
+        "country": "Nigeria",
+        "tier": "Edo State - Benin City"
+      },
+      "niche": "Bakery / Cake Studio",
+      "urlPlaceholder": "https://shugaddicts.ng",
+      "sitemapArchitecture": [
+        "/",
+        "/bento-boxes",
+        "/cupcake-boxes",
+        "/drip-cakes",
+        "/treat-drops",
+        "/cart"
+      ],
+      "routingStructure": "Dynamic modern storefront with modal product quick-views and slide-over mini cart.",
+      "menuPresentation": {
+        "style": "Card Grid with Bento Box Highlight Strips",
+        "columns": "2 columns mobile, 3 columns desktop",
+        "segmentationLogic": "Vibe & Occasion (Mini Bento Love, Friday Treat Box, Birthday Inscription)",
+        "priceDisplay": "Fixed transparent pricing on all bento & mini treats"
+      },
+      "designPhilosophy": "Playful Gen-Z aesthetic, pastel candy tones, micro-interactions, Instagram viral style.",
+      "copywriting": {
+        "headlineFormula": "Playful Craving + Emotional Treat Trigger",
+        "heroHeadline": "Your Daily Dose of Sweet Euphoria in Benin City",
+        "subheadline": "From cute lunchbox bento cakes to decadent chocolate drips, satisfy your sweetest cravings in 3 easy taps.",
+        "primaryCTA": "Grab Your Bento Cake 🍰",
+        "secondaryCTA": "See Today's Specials"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Shugaddicts Cake Bakery",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Benin City",
+          "addressRegion": "Edo State",
+          "addressCountry": "NG"
+        },
+        "priceRange": "₦₦"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["bento cakes in Benin City", "lunchbox cakes Edo State", "cute birthday cupcakes Benin"],
+        "localSeoTactics": "Social schema linking Instagram & TikTok handles to Google Knowledge Graph"
+      },
+      "colorPalette": {
+        "primary": "#D81B60",
+        "secondary": "#F8BBD0",
+        "background": "#FFF9FA",
+        "surface": "#FFFFFF",
+        "text": "#2E1520",
+        "accent": "#FFE082"
+      }
+    },
+    {
+      "id": "site-05",
+      "name": "Bakery Xpress Nig Ent",
+      "location": {
+        "city": "Benin City",
+        "state": "Edo State",
+        "subregion": "Sapele Road",
+        "country": "Nigeria",
+        "tier": "Edo State - Benin City"
+      },
+      "niche": "Bakery / Cafe",
+      "urlPlaceholder": "https://bakeryxpress.ng",
+      "sitemapArchitecture": [
+        "/",
+        "/bread-loaves",
+        "/pastries-snacks",
+        "/cakes",
+        "/family-bundles",
+        "/order-pickup",
+        "/branches"
+      ],
+      "routingStructure": "Catalog-driven e-commerce with branch-based inventory filtering and pickup slot selection.",
+      "menuPresentation": {
+        "style": "Structured List and Card Matrix",
+        "columns": "1-column list on mobile with sticky quantity steppers; 3-column cards on desktop",
+        "segmentationLogic": "Departmental (Bakery Fresh, Hot Snacks, Beverages, Event Catering)",
+        "priceDisplay": "Item base price with volume discounts on bundles"
+      },
+      "designPhilosophy": "High-utility retail convenience, clear availability cues, rapid reorder.",
+      "copywriting": {
+        "headlineFormula": "Utility + Availability + Fresh Guarantee",
+        "heroHeadline": "Daily Warm Loaves, Savory Pastries & Party Platters",
+        "subheadline": "Bakery Xpress brings fresh-baked convenience to your doorstep across Sapele Road and greater Benin City.",
+        "primaryCTA": "Start Express Order",
+        "secondaryCTA": "View Store Hours"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Bakery Xpress Nig Ent",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Sapele Road",
+          "addressLocality": "Benin City",
+          "addressRegion": "Edo State",
+          "addressCountry": "NG"
+        },
+        "openingHours": "Mo-Sa 07:30-20:00"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["fresh bread bakery Sapele Road Benin", "pastry delivery Benin City", "meat pie and sausage roll Benin"],
+        "localSeoTactics": "Opening hours schema with real-time open status for high-intent morning searchers"
+      },
+      "colorPalette": {
+        "primary": "#B71C1C",
+        "secondary": "#4E342E",
+        "background": "#FAFAFA",
+        "surface": "#FFFFFF",
+        "text": "#212121",
+        "accent": "#FFF3E0"
+      }
+    },
+    {
+      "id": "site-06",
+      "name": "Kada Plaza Food & Confectionery",
+      "location": {
+        "city": "Benin City",
+        "state": "Edo State",
+        "subregion": "Airport Road",
+        "country": "Nigeria",
+        "tier": "Edo State - Benin City"
+      },
+      "niche": "DTC Food & Lifestyle Brand",
+      "urlPlaceholder": "https://kadaplaza.com.ng",
+      "sitemapArchitecture": [
+        "/",
+        "/food-court",
+        "/bakery-pastry",
+        "/cinema",
+        "/party-packages",
+        "/about-plaza",
+        "/contact"
+      ],
+      "routingStructure": "Multi-division lifestyle portal with independent sub-domain/sub-directory paths for Cinema, Food Court, and Event Booking.",
+      "menuPresentation": {
+        "style": "Multi-Vendor Carousel and Interactive Tabs",
+        "columns": "4-column desktop banner cards, horizontal swipe on mobile",
+        "segmentationLogic": "Outlet-based (Bakery Delights, Grill & Chops, Ice Cream Parlour, Family Combos)",
+        "priceDisplay": "Clear standard pricing with combo deal badges"
+      },
+      "designPhilosophy": "Destination lifestyle entertainment, high foot-traffic conversion, Airport Road prominence.",
+      "copywriting": {
+        "headlineFormula": "Destination Lifestyle + Celebration Center",
+        "heroHeadline": "Edo's Premier Destination for Flavor, Fun & Celebrations",
+        "subheadline": "Located right on Airport Road. Treat your family to freshly baked pastries, signature celebration treats, and unforgettable memories.",
+        "primaryCTA": "Order Takeaway & Treats",
+        "secondaryCTA": "Book Event Space"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "FoodEstablishment",
+        "name": "Kada Plaza Food & Confectionery",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Airport Road",
+          "addressLocality": "Benin City",
+          "addressRegion": "Edo State",
+          "addressCountry": "NG"
+        },
+        "priceRange": "₦₦₦"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["Kada Plaza Airport Road Benin", "fast food and bakery Airport Road Benin", "best family hangout Benin City"],
+        "localSeoTactics": "High-volume branded search domination and landmark proximity queries ('near Airport Road')"
+      },
+      "colorPalette": {
+        "primary": "#1B5E20",
+        "secondary": "#D32F2F",
+        "background": "#FFFFFF",
+        "surface": "#F5F5F5",
+        "text": "#1A1A1A",
+        "accent": "#FFC107"
+      }
+    },
+    {
+      "id": "site-07",
+      "name": "Mat-Ice Confectioneries & Kitchen",
+      "location": {
+        "city": "Benin City",
+        "state": "Edo State",
+        "subregion": "Akpakpava / Ring Road",
+        "country": "Nigeria",
+        "tier": "Edo State - Benin City"
+      },
+      "niche": "DTC Food & Lifestyle Brand",
+      "urlPlaceholder": "https://mat-ice.com.ng",
+      "sitemapArchitecture": [
+        "/",
+        "/meals",
+        "/bakery-cakes",
+        "/ice-cream-desserts",
+        "/locations",
+        "/franchise",
+        "/contact"
+      ],
+      "routingStructure": "Branch-aware multi-page web platform connecting orders to specific kitchen locations.",
+      "menuPresentation": {
+        "style": "Categorized Accordion & Food Grid",
+        "columns": "3 columns desktop, 2 columns mobile",
+        "segmentationLogic": "Meal Time & Product Family (Breakfast Loaves, Birthday Cakes, Traditional Platters)",
+        "priceDisplay": "Direct retail menu prices with takeaway packaging fees itemized"
+      },
+      "designPhilosophy": "Generational trust, family comfort, regional legacy.",
+      "copywriting": {
+        "headlineFormula": "Heritage Trust + Generational Taste",
+        "heroHeadline": "Serving Benin City's Most Beloved Flavors For Over 20 Years",
+        "subheadline": "From hot savory small chops to mouthwatering celebration cakes, experience the authentic taste of Edo hospitality.",
+        "primaryCTA": "Order Food & Cakes",
+        "secondaryCTA": "Find Closest Branch"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Mat-Ice Confectioneries & Kitchen",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Akpakpava Street",
+          "addressLocality": "Benin City",
+          "addressRegion": "Edo State",
+          "addressCountry": "NG"
+        },
+        "servesCuisine": "Nigerian, Fast Food, Bakery"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["Mat Ice Benin City menu", "best meatpie in Benin City", "birthday cake Akpakpava Benin"],
+        "localSeoTactics": "Multi-location branch pages with distinct schema for each outlet in Benin City"
+      },
+      "colorPalette": {
+        "primary": "#C62828",
+        "secondary": "#FBC02D",
+        "background": "#FDFBF7",
+        "surface": "#FFFFFF",
+        "text": "#2C1810",
+        "accent": "#4E342E"
+      }
+    },
+    {
+      "id": "site-08",
+      "name": "Sandy's Confectionery & Events",
+      "location": {
+        "city": "Auchi",
+        "state": "Edo State",
+        "subregion": "Oscar St, Iyekhei Girls Road",
+        "country": "Nigeria",
+        "tier": "Edo State - Outside Benin City"
+      },
+      "niche": "Bakery / Cake Studio",
+      "urlPlaceholder": "https://sandysconfectionery-auchi.ng",
+      "sitemapArchitecture": [
+        "/",
+        "/wedding-cakes",
+        "/birthday-cakes",
+        "/pastry-catering",
+        "/contact"
+      ],
+      "routingStructure": "Streamlined lightweight multi-page site with high emphasis on instant direct dial and WhatsApp.",
+      "menuPresentation": {
+        "style": "Photo Gallery with Inquiry Overlays",
+        "columns": "2 columns mobile, 3 columns desktop",
+        "segmentationLogic": "Event type (Traditional Weddings, Convocation Cakes, Birthdays)",
+        "priceDisplay": "Starting from estimates with call to order"
+      },
+      "designPhilosophy": "Warm community connection, festive traditional centerpieces.",
+      "copywriting": {
+        "headlineFormula": "Regional Pride + Event Reliability",
+        "heroHeadline": "Auchi's Trusted Name in Magnificent Celebration Cakes",
+        "subheadline": "Handcrafted wedding tiers, delicious event pastries, and dessert tables made with premium ingredients in Auchi.",
+        "primaryCTA": "Book Cake for Your Event",
+        "secondaryCTA": "Call 0814 297 7496"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Sandy's Confectionery Cakes and Event",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Oscar Street, Iyekhei Girls Road",
+          "addressLocality": "Auchi",
+          "addressRegion": "Edo State",
+          "addressCountry": "NG"
+        },
+        "telephone": "+2348142977496"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["cake baker in Auchi Edo State", "wedding cakes Auchi", "event catering Iyekhei Auchi"],
+        "localSeoTactics": "Dominates regional search queries for Edo North wedding caterers and event planners"
+      },
+      "colorPalette": {
+        "primary": "#7B1FA2",
+        "secondary": "#F48FB1",
+        "background": "#FFFDF9",
+        "surface": "#FFFFFF",
+        "text": "#231126",
+        "accent": "#FFE082"
+      }
+    },
+    {
+      "id": "site-09",
+      "name": "SweetFlare Cakes & Pastries",
+      "location": {
+        "city": "Auchi",
+        "state": "Edo State",
+        "subregion": "Campus 2 Area",
+        "country": "Nigeria",
+        "tier": "Edo State - Outside Benin City"
+      },
+      "niche": "Bakery / Confectionery",
+      "urlPlaceholder": "https://sweetflare-auchi.com",
+      "sitemapArchitecture": [
+        "/",
+        "/combos",
+        "/parfaits",
+        "/budget-cakes",
+        "/order"
+      ],
+      "routingStructure": "Single-page application with bottom navigation bar for mobile students.",
+      "menuPresentation": {
+        "style": "Budget Card Grid with Promo Stickers",
+        "columns": "2 columns on mobile, 3 columns desktop",
+        "segmentationLogic": "Price Tiers ('Under ₦5,000', 'Student Combos', 'Weekend Specials')",
+        "priceDisplay": "Prominently badged discounted prices"
+      },
+      "designPhilosophy": "High-energy, student-centric, snack culture, high velocity.",
+      "copywriting": {
+        "headlineFormula": "Affordable Celebration + High Flavor",
+        "heroHeadline": "Make Every Milestone Sweet Without Breaking the Bank",
+        "subheadline": "Custom cakes, fresh cream parfaits, and crispy small chops freshly prepared near Campus 2, Auchi.",
+        "primaryCTA": "Order on WhatsApp",
+        "secondaryCTA": "See Student Deals"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "SweetFlare Cakes & Pastries",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Campus 2 Area",
+          "addressLocality": "Auchi",
+          "addressRegion": "Edo State",
+          "addressCountry": "NG"
+        },
+        "telephone": "+2348162432521",
+        "priceRange": "₦"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["affordable cakes Auchi", "cake parfaits Campus 2 Auchi", "small chops delivery Auchi Edo"],
+        "localSeoTactics": "Targeting student residential keywords and local polytechnic celebration events"
+      },
+      "colorPalette": {
+        "primary": "#E91E63",
+        "secondary": "#FF9800",
+        "background": "#FFFFFF",
+        "surface": "#FFF3E0",
+        "text": "#212121",
+        "accent": "#FF4081"
+      }
+    },
+    {
+      "id": "site-10",
+      "name": "Ehi Bakery & Confectionery",
+      "location": {
+        "city": "Ekpoma",
+        "state": "Edo State",
+        "subregion": "Market Road / AAU Corridor",
+        "country": "Nigeria",
+        "tier": "Edo State - Outside Benin City"
+      },
+      "niche": "Bakery / Confectionery",
+      "urlPlaceholder": "https://ehibakery-ekpoma.ng",
+      "sitemapArchitecture": [
+        "/",
+        "/bread-catalog",
+        "/pastries",
+        "/wholesale-orders",
+        "/contact"
+      ],
+      "routingStructure": "Classic static multi-page website with contact form and distributor portal.",
+      "menuPresentation": {
+        "style": "Tabular and Card Hybrid",
+        "columns": "2-column simple grid",
+        "segmentationLogic": "Product Type (Bread Loaves, Rolls, Meat Pies, Birthday Cakes)",
+        "priceDisplay": "Wholesale per carton and retail unit pricing"
+      },
+      "designPhilosophy": "Wholesome tradition, staple bread production, community dependability.",
+      "copywriting": {
+        "headlineFormula": "Warmth of Tradition + Consistent Freshness",
+        "heroHeadline": "Fresh From The Oven to Esanland’s Tables Every Morning",
+        "subheadline": "Baking the finest golden loaves, savory pies, and celebration birthday cakes in Ekpoma for over 15 years.",
+        "primaryCTA": "Order for Pickup / Delivery",
+        "secondaryCTA": "Wholesale Inquiries"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Ehi Bakery & Confectionery",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ekpoma",
+          "addressRegion": "Edo State",
+          "addressCountry": "NG"
+        },
+        "priceRange": "₦"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["bakery in Ekpoma Edo State", "fresh bread supplier Ekpoma", "custom cakes AAU Ekpoma"],
+        "localSeoTactics": "Targeting Esan Central business directories and university event searches"
+      },
+      "colorPalette": {
+        "primary": "#8D6E63",
+        "secondary": "#BF360C",
+        "background": "#FBF9F6",
+        "surface": "#FFFFFF",
+        "text": "#3E2723",
+        "accent": "#FFF8E1"
+      }
+    },
+    {
+      "id": "site-11",
+      "name": "Cakes and Cream",
+      "location": {
+        "city": "Lagos",
+        "state": "Lagos State",
+        "subregion": "Victoria Island / Surulere / Ikeja",
+        "country": "Nigeria",
+        "tier": "Rest of Nigeria - National Leader"
+      },
+      "niche": "Bakery / Cake Studio",
+      "urlPlaceholder": "https://cakesandcream.ng",
+      "sitemapArchitecture": [
+        "/",
+        "/cakes/birthday",
+        "/cakes/wedding",
+        "/express-delivery",
+        "/pastries",
+        "/desserts",
+        "/branches",
+        "/cart",
+        "/checkout",
+        "/track-order"
+      ],
+      "routingStructure": "Full enterprise e-commerce platform with dynamic Next.js App Router routing, location-aware branch stock, and delivery slot engine.",
+      "menuPresentation": {
+        "style": "Faceted Filter Grid",
+        "columns": "4 columns desktop, 2 columns mobile",
+        "segmentationLogic": "Multi-dimensional (Occasion, Flavor, Layer Count, Price Range, Delivery Speed)",
+        "priceDisplay": "Dynamic price calculations based on selected cake size and tier"
+      },
+      "designPhilosophy": "Category dominance, friction-free purchasing, corporate dependability.",
+      "copywriting": {
+        "headlineFormula": "Delight + Tradition + Scale",
+        "heroHeadline": "Creating Irresistible Smiles Across Nigeria",
+        "subheadline": "Order signature celebration cakes, fresh pastries, and custom confectionery delivered same-day across major branches.",
+        "primaryCTA": "Shop Birthday Cakes",
+        "secondaryCTA": "Explore Express Delivery"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Cakes and Cream",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lagos",
+          "addressCountry": "NG"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.7",
+          "reviewCount": "1840"
+        },
+        "priceRange": "₦₦"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["order cakes online Nigeria", "birthday cake delivery Lagos", "same day cakes Nigeria"],
+        "localSeoTactics": "National programmatic SEO architecture with localized sub-branch landing pages"
+      },
+      "colorPalette": {
+        "primary": "#721C24",
+        "secondary": "#E2B974",
+        "background": "#FFFFFF",
+        "surface": "#F8F9FA",
+        "text": "#212529",
+        "accent": "#C82333"
+      }
+    },
+    {
+      "id": "site-12",
+      "name": "WaraCake",
+      "location": {
+        "city": "Nationwide",
+        "state": "Multi-State",
+        "subregion": "Lagos, Abuja, PH, Benin City",
+        "country": "Nigeria",
+        "tier": "Rest of Nigeria - National Marketplace"
+      },
+      "niche": "Bakery / Cake Studio",
+      "urlPlaceholder": "https://waracake.com",
+      "sitemapArchitecture": [
+        "/",
+        "/city-select",
+        "/occasions",
+        "/surprise-packages",
+        "/custom-baker-match",
+        "/checkout",
+        "/gift-card"
+      ],
+      "routingStructure": "Marketplace funnel with progressive wizard routing (City Selection -> Baker Match -> Cake Customization -> Addon Gifting -> Checkout).",
+      "menuPresentation": {
+        "style": "Wizard & Filtered Marketplace Cards",
+        "columns": "3 columns desktop, 1 column step-by-step mobile",
+        "segmentationLogic": "City-first and Delivery-Window first (Same-day vs Scheduled Future Date)",
+        "priceDisplay": "All-inclusive bundle pricing (Cake + Gift Add-ons)"
+      },
+      "designPhilosophy": "Cross-border gifting, emotional surprise delivery, transparent logistics.",
+      "copywriting": {
+        "headlineFormula": "Distance Gifting + Delivery Assurance",
+        "heroHeadline": "Send Sweet Surprises Anywhere in Nigeria",
+        "subheadline": "We deliver fresh designer cakes, gourmet hampers, and party treats to your loved ones on their special day.",
+        "primaryCTA": "Choose Delivery City",
+        "secondaryCTA": "Browse Gift Bundles"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "OnlineStore",
+        "name": "WaraCake",
+        "areaServed": ["Lagos", "Abuja", "Port Harcourt", "Benin City", "Ibadan"],
+        "priceRange": "₦₦"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["send cake to Nigeria from UK USA", "online cake delivery Nigeria", "surprise cake delivery Benin City"],
+        "localSeoTactics": "High-intent diaspora targeting and programmatic city landing pages for all 36 states"
+      },
+      "colorPalette": {
+        "primary": "#E53935",
+        "secondary": "#1E88E5",
+        "background": "#FFFFFF",
+        "surface": "#F5F5F5",
+        "text": "#1E293B",
+        "accent": "#FFA000"
+      }
+    },
+    {
+      "id": "site-13",
+      "name": "So Fresh Neighborhood Market",
+      "location": {
+        "city": "Lagos / Abuja / PH",
+        "state": "Multi-State",
+        "subregion": "Lekki, Ikeja, Maitama",
+        "country": "Nigeria",
+        "tier": "Rest of Nigeria - National DTC Brand"
+      },
+      "niche": "DTC Food & Lifestyle Brand",
+      "urlPlaceholder": "https://sofreshng.com",
+      "sitemapArchitecture": [
+        "/",
+        "/menu/parfaits-bowls",
+        "/menu/artisan-salads",
+        "/menu/smoothies-juices",
+        "/meal-plans",
+        "/store-locator",
+        "/rewards",
+        "/cart"
+      ],
+      "routingStructure": "Progressive Web App (PWA) architecture with instant client-side route caching and store-specific inventory lookup.",
+      "menuPresentation": {
+        "style": "Clean Wellness Card Grid with Nutritional Tags",
+        "columns": "3 columns desktop, 2 columns mobile",
+        "segmentationLogic": "Dietary and Functional Goals (Detox, High-Protein, Parfaits, Wholesome Bakery)",
+        "priceDisplay": "Calorie counts alongside prominent currency price tags"
+      },
+      "designPhilosophy": "Clean vitality, ingredient transparency, crisp health-conscious lifestyle.",
+      "copywriting": {
+        "headlineFormula": "Vitality + Daily Health + Premium Quality",
+        "heroHeadline": "Live Fresh, Eat Well — 100% Wholesome Goodness",
+        "subheadline": "Nutrient-rich handcrafted parfaits, artisan baked snacks, and wholesome meals prepared fresh every single day.",
+        "primaryCTA": "Order Fresh Now",
+        "secondaryCTA": "View Meal Plans"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "So Fresh Neighborhood Market",
+        "servesCuisine": "Healthy Food, Parfaits, Bakery, Juices",
+        "priceRange": "₦₦₦"
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["fresh parfait delivery Nigeria", "healthy food store Lagos Abuja", "artisan fruit bowls Nigeria"],
+        "localSeoTactics": "Content marketing on nutrition, high Core Web Vitals performance scores"
+      },
+      "colorPalette": {
+        "primary": "#2E7D32",
+        "secondary": "#F57C00",
+        "background": "#F9FBF7",
+        "surface": "#FFFFFF",
+        "text": "#1B2B1B",
+        "accent": "#E8F5E9"
+      }
+    },
+    {
+      "id": "site-14",
+      "name": "Eden Life",
+      "location": {
+        "city": "Lagos",
+        "state": "Lagos State",
+        "subregion": "National Tech & Culinary Hub",
+        "country": "Nigeria",
+        "tier": "Rest of Nigeria - National DTC Brand"
+      },
+      "niche": "DTC Food & Lifestyle Brand",
+      "urlPlaceholder": "https://ouredenlife.com",
+      "sitemapArchitecture": [
+        "/",
+        "/food",
+        "/pricing",
+        "/how-it-works",
+        "/corporate-catering",
+        "/login",
+        "/app"
+      ],
+      "routingStructure": "Next.js dynamic web app with high-converting landing pages routing to authenticated subscription dashboard.",
+      "menuPresentation": {
+        "style": "Interactive Pricing Calculator & Meal Cards",
+        "columns": "Single interactive step-by-step selector on mobile; split view on desktop",
+        "segmentationLogic": "Lifestyle cadence (Weekly Meal Boxes, Chef Specials, Party Grazing Boxes)",
+        "priceDisplay": "Subscription frequency pricing with automated cost-per-meal metrics"
+      },
+      "designPhilosophy": "Tech-enabled lifestyle convenience, conversational UI, zero friction.",
+      "copywriting": {
+        "headlineFormula": "Problem/Relief + Lifestyle Elevation + Authority",
+        "heroHeadline": "Chef-Cooked Meals & Delicious Treats, Delivered On Your Terms",
+        "subheadline": "Reclaim your hours. Enjoy restaurant-grade meal boxes, gourmet pastries, and personalized catering without lifting a finger.",
+        "primaryCTA": "Start Your Delicious Plan",
+        "secondaryCTA": "Browse Menu Catalog"
+      },
+      "seoSchema": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Eden Life Inc.",
+        "sameAs": ["https://twitter.com/ouredenlife", "https://instagram.com/ouredenlife"],
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "NGN"
+        }
+      },
+      "searchOptimizations": {
+        "targetKeywords": ["meal prep delivery Nigeria", "gourmet food delivery Lagos", "chef cooked meals Nigeria"],
+        "localSeoTactics": "High domain authority content flywheel, viral lifestyle case studies and rich video testimonials"
+      },
+      "colorPalette": {
+        "primary": "#0369A1",
+        "secondary": "#14B8A6",
+        "background": "#F8FAFC",
+        "surface": "#FFFFFF",
+        "text": "#0F172A",
+        "accent": "#F1F5F9"
+      }
+    }
+  ]
+}

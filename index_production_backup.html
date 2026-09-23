@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cakesbynessahh - Making Every Celebration Sweeter. Handcrafted bespoke cakes, fresh pastries, parfaits, and surprise packages in Benin City.">
+  <meta name="theme-color" content="#8E1633">
+  <title>Cakesbynessahh | Making Every Celebration Sweeter</title>
+  
+  <!-- Google Fonts Preconnect & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Deferred Scripts -->
+  <script src="products.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar" role="region" aria-label="Announcement">
+    <p>✨ Fresh oven batches daily &bull; Benin City deliveries &amp; pickup on Airport Road!</p>
+  </div>
+
+  <!-- Responsive Header -->
+  <header class="site-header" id="header">
+    <div class="header-container">
+      <a href="#" class="brand-logo" aria-label="Cakesbynessahh Home">
+        <span class="brand-icon" aria-hidden="true">🎂</span>
+        <span class="brand-name">Cakesbynessahh</span>
+      </a>
+
+      <div class="header-actions">
+        <button class="cart-btn" id="cartBtn" aria-label="View Shopping Cart">
+          <svg class="cart-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-badge" id="cartBadge" aria-label="0 items in cart">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Appetizing Hero Section -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-sparkle" aria-hidden="true">🍰</span>
+            <span>Artisan Bakery &amp; Confectionery</span>
+          </div>
+          
+          <h1 class="hero-title" id="hero-title">
+            Making Every <span class="highlight-text">Celebration</span> Sweeter
+          </h1>
+          
+          <p class="hero-subtext">
+            Indulge in artisanal celebration cakes, gourmet bento boxes, decadent parfaits, and party food trays baked fresh with love in Benin City.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#catalog" class="btn btn-primary" id="orderNowBtn">
+              <span>Order Now</span>
+              <svg class="btn-arrow" viewBox="0 0 20 20" fill="currentColor" width="18" height="18" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <a href="#categories" class="btn btn-outline">Browse Menu</a>
+          </div>
+
+          <!-- Hero Highlights -->
+          <div class="hero-perks">
+            <div class="perk-item">
+              <span class="perk-icon" aria-hidden="true">🧁</span>
+              <span class="perk-label">100% Fresh Daily</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon" aria-hidden="true">⚡</span>
+              <span class="perk-label">Fast Airport Rd Pickup</span>
+            </div>
+            <div class="perk-item">
+              <span class="perk-icon" aria-hidden="true">⭐</span>
+              <span class="perk-label">Custom Inscriptions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-image-wrapper">
+            <img 
+              src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=900&q=80" 
+              alt="Artisan Celebration Cake" 
+              class="hero-img"
+              loading="eager"
+            >
+            <div class="hero-floating-tag">
+              <span class="tag-title">Custom Cakes</span>
+              <span class="tag-desc">Personalized for your special day</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Filter Section (Pill-shaped buttons) -->
+    <section class="category-section" id="categories" aria-labelledby="category-title">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">Menu Categories</span>
+          <h2 class="section-title" id="category-title">Select Your Sweet Delight</h2>
+        </div>
+
+        <!-- Scrollable Pill Category Filter Strip -->
+        <div class="category-filters-container">
+          <div class="category-filters" id="categoryFilterBar" role="tablist" aria-label="Menu category filters">
+            <button class="filter-pill active" role="tab" aria-selected="true" data-category="All">
+              <span class="pill-emoji">✨</span> All Menu
+            </button>
+            <button class="filter-pill" role="tab" aria-selected="false" data-category="Celebration Cakes">
+              <span class="pill-emoji">🎂</span> Celebration Cakes
+            </button>
+            <button class="filter-pill" role="tab" aria-selected="false" data-category="Bento Cakes">
+              <span class="pill-emoji">🍱</span> Bento Cakes
+            </button>
+            <button class="filter-pill" role="tab" aria-selected="false" data-category="One-Layered Cakes">
+              <span class="pill-emoji">🍰</span> One-Layered Cakes
+            </button>
+            <button class="filter-pill" role="tab" aria-selected="false" data-category="Cake Parfaits">
+              <span class="pill-emoji">🍧</span> Cake Parfaits
+            </button>
+            <button class="filter-pill" role="tab" aria-selected="false" data-category="Cake Loaves">
+              <span class="pill-emoji">🍞</span> Cake Loaves
+            </button>
+            <button class="filter-pill" role="tab" aria-selected="false" data-category="Banana Bread">
+              <span class="pill-emoji">🍌</span> Banana Bread
+            </button>
+            <button class="filter-pill" role="tab" aria-selected="false" data-category="Pastries">
+              <span class="pill-emoji">🥟</span> Pastries
+            </button>
+            <button class="filter-pill" role="tab" aria-selected="false" data-category="Small Chops">
+              <span class="pill-emoji">🍢</span> Small Chops
+            </button>
+            <button class="filter-pill" role="tab" aria-selected="false" data-category="Food Trays">
+              <span class="pill-emoji">🍱</span> Food Trays
+            </button>
+            <button class="filter-pill" role="tab" aria-selected="false" data-category="Birthday Surprise Packages">
+              <span class="pill-emoji">🎁</span> Birthday Surprise Packages
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Catalog Section -->
+    <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">
+      <div class="section-container">
+        <div class="catalog-header-meta">
+          <div>
+            <h3 class="catalog-active-title" id="catalog-title">All Confections</h3>
+            <p class="catalog-subtitle">Transparent pricing on every freshly baked treat</p>
+          </div>
+          <span class="catalog-count" id="productCount">Loading delicious treats...</span>
+        </div>
+
+        <!-- Products Grid (Dynamically Populated) -->
+        <div class="products-grid" id="productsGrid" aria-live="polite">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Custom Cake Configurator Modal (Hidden by Default) -->
+  <div class="modal-backdrop" id="cakeModalBackdrop" aria-hidden="true">
+    <div class="configurator-modal" role="dialog" aria-labelledby="modalCakeTitle" aria-modal="true">
+      <div class="modal-header">
+        <div>
+          <span class="modal-eyebrow">Custom Cake Studio</span>
+          <h3 class="modal-title" id="modalCakeTitle">Customize Your Cake</h3>
+        </div>
+        <button class="modal-close-btn" id="closeModalBtn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form class="configurator-form" id="cakeConfigForm" onsubmit="return false;">
+        <!-- Base Product Summary -->
+        <div class="modal-product-summary">
+          <img src="" alt="" id="modalProductImg" class="modal-thumb">
+          <div class="modal-summary-meta">
+            <span class="summary-name" id="modalProductName">Cake Name</span>
+            <div class="summary-price-wrapper">
+              <span class="summary-price-label">Starting Price:</span>
+              <span class="summary-price" id="modalBasePrice">₦0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option: Size / Type -->
+        <div class="form-group">
+          <label for="cakeSizeSelect" class="form-label">
+            <span class="label-text">Select Size &amp; Style</span>
+            <span class="label-required">*Required</span>
+          </label>
+          <select id="cakeSizeSelect" class="form-select" required>
+            <!-- Options dynamically loaded based on cake type -->
+          </select>
+        </div>
+
+        <!-- Option: Sponge Flavor -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-text">Choose Sponge Flavor</span>
+            <span class="label-required">*Required</span>
+          </label>
+          <div class="flavor-chips-grid">
+            <label class="flavor-chip">
+              <input type="radio" name="spongeFlavor" value="Red Velvet" checked>
+              <span class="chip-content">
+                <span class="chip-color red-velvet"></span>
+                <span class="chip-name">Red Velvet</span>
+              </span>
+            </label>
+            <label class="flavor-chip">
+              <input type="radio" name="spongeFlavor" value="Chocolate">
+              <span class="chip-content">
+                <span class="chip-color chocolate"></span>
+                <span class="chip-name">Chocolate</span>
+              </span>
+            </label>
+            <label class="flavor-chip">
+              <input type="radio" name="spongeFlavor" value="Vanilla">
+              <span class="chip-content">
+                <span class="chip-color vanilla"></span>
+                <span class="chip-name">Vanilla</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Option: Custom Inscription -->
+        <div class="form-group">
+          <div class="label-row">
+            <label for="cakeInscription" class="form-label">Custom Cake Inscription</label>
+            <span class="char-counter" id="charCounter">0/40</span>
+          </div>
+          <input 
+            type="text" 
+            id="cakeInscription" 
+            class="form-input" 
+            placeholder='e.g. "Happy 30th Birthday Michelle!"'
+            maxlength="40"
+          >
+          <span class="form-hint">Written elegantly on your cake with piped frosting.</span>
+        </div>
+
+        <!-- Option: Delivery / Pickup Date -->
+        <div class="form-group">
+          <label for="cakeDeliveryDate" class="form-label">
+            <span class="label-text">Delivery / Pickup Date</span>
+            <span class="label-required">*Required</span>
+          </label>
+          <input 
+            type="date" 
+            id="cakeDeliveryDate" 
+            class="form-input" 
+            required
+          >
+          <span class="form-hint">Cakes require at least 24h advance baking notice.</span>
+        </div>
+
+        <!-- Modal Price & CTA -->
+        <div class="modal-footer">
+          <div class="modal-total-display">
+            <span class="total-caption">Item Total:</span>
+            <span class="total-amount" id="modalCalculatedTotal">₦0</span>
+          </div>
+          <button type="button" class="btn btn-primary btn-block" id="saveCakeToCartBtn">
+            <span>Save to Cart 🛒</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Slide-Out Mobile Cart Drawer (Hidden by Default) -->
+  <div class="cart-drawer-overlay" id="cartOverlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-labelledby="cartDrawerTitle" aria-modal="true" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-header-left">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="drawer-cart-icon">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <h3 class="drawer-title" id="cartDrawerTitle">Your Sweet Cart</h3>
+        <span class="drawer-count-badge" id="drawerCartCount">0</span>
+      </div>
+      <button class="drawer-close-btn" id="closeCartBtn" aria-label="Close cart drawer">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-body" id="drawerBody">
+      <!-- Items Container -->
+      <div class="cart-items-container" id="cartItemsList">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Customer Checkout Details Form -->
+      <div class="cart-checkout-form" id="checkoutFormSection">
+        <h4 class="checkout-form-title">Delivery &amp; Customer Details</h4>
+        
+        <div class="drawer-form-group">
+          <label for="custName" class="drawer-label">Full Name *</label>
+          <input type="text" id="custName" class="drawer-input" placeholder="e.g. Osasuyi Ighodaro" required>
+        </div>
+
+        <div class="drawer-form-group">
+          <label for="custAddress" class="drawer-label">Delivery Address (Benin City) *</label>
+          <input type="text" id="custAddress" class="drawer-input" placeholder="e.g. 18 Airport Road, GRA, Benin City" required>
+          <span class="drawer-hint">Enter your delivery location or specify "Store Pickup at Airport Road".</span>
+        </div>
+
+        <div class="drawer-form-group">
+          <label for="custNote" class="drawer-label">Pickup / Delivery Note (Optional)</label>
+          <textarea id="custNote" class="drawer-textarea" rows="2" placeholder="e.g. Please call when arriving, deliver by 2 PM, or gift surprise note."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <div class="drawer-summary-row">
+        <span class="drawer-summary-label">Total Amount:</span>
+        <span class="drawer-summary-total" id="cartDrawerTotal">₦0</span>
+      </div>
+
+      <!-- 1-Tap WhatsApp Checkout Button -->
+      <button type="button" class="btn-whatsapp-checkout" id="whatsappCheckoutBtn">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" class="whatsapp-icon">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span>1-Tap WhatsApp Checkout</span>
+      </button>
+      <span class="drawer-secure-note">Direct to Cakesbynessahh Bakery Hotline: +2349059340229</span>
+    </div>
+  </aside>
+
+  <!-- Simple Responsive Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="brand-icon" aria-hidden="true">🎂</span>
+          <span class="brand-name">Cakesbynessahh</span>
+        </div>
+        <p class="footer-motto">"Making Every Celebration Sweeter"</p>
+      </div>
+
+      <div class="footer-details">
+        <div class="footer-block">
+          <h4 class="footer-heading">Physical Store &amp; Bakery</h4>
+          <address class="footer-address">
+            <svg class="location-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Airport Road, Benin City, Edo State</span>
+          </address>
+        </div>
+
+        <div class="footer-block">
+          <h4 class="footer-heading">Opening Hours</h4>
+          <p class="footer-hours">Monday – Saturday: 8:00 AM – 7:00 PM</p>
+          <p class="footer-hours">Sunday: Event Pickups &amp; Delivery Orders</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cakesbynessahh. All rights reserved. Baked with love in Edo State.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
