@@ -1,0 +1,625 @@
+{
+  "https://cedricgrolet.com": {
+    "error": "page.goto: net::ERR_CONNECTION_REFUSED at https://cedricgrolet.com/\nCall log:\n\u001b[2m  - navigating to \"https://cedricgrolet.com/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  "https://www.peggyporschenacademy.com": {
+    "error": "page.goto: net::ERR_SSL_PROTOCOL_ERROR at https://www.peggyporschenacademy.com/\nCall log:\n\u001b[2m  - navigating to \"https://www.peggyporschenacademy.com/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  "https://milkbarstore.com": {
+    "hero": {
+      "bgColor": "#000000",
+      "height": "153px",
+      "layout": "block",
+      "padding": "0px"
+    },
+    "typography": {
+      "h1": {
+        "fontFamily": "Garnett",
+        "fontSize": "53px",
+        "lineHeight": "53px",
+        "letterSpacing": "normal"
+      },
+      "p": {
+        "fontFamily": "Garnett",
+        "fontSize": "14px",
+        "lineHeight": "19.6px",
+        "letterSpacing": "normal"
+      }
+    },
+    "colors": [
+      "#000000",
+      "#ffefda",
+      "#e83a87",
+      "#ffffff",
+      "#fff5e9",
+      "#666666"
+    ],
+    "navigation": {
+      "type": "relative",
+      "height": "108px",
+      "background": "#000000",
+      "items": 67
+    },
+    "cta": {
+      "bgColor": "#000000",
+      "borderRadius": "0px",
+      "padding": "1px 6px",
+      "fontSize": "15px",
+      "text": ""
+    },
+    "productCards": {
+      "displayMode": "flex",
+      "gridTemplateColumns": null,
+      "gap": "normal",
+      "childBorderRadius": "0px",
+      "childBoxShadow": "none"
+    },
+    "trustSignals": [
+      "reviews",
+      "stars rating",
+      "awards"
+    ],
+    "images": {
+      "count": 86,
+      "examples": [
+        {
+          "aspectRatio": "auto 375 / 375",
+          "objectFit": "cover",
+          "lazy": "lazy"
+        },
+        {
+          "aspectRatio": "auto 375 / 375",
+          "objectFit": "cover",
+          "lazy": "lazy"
+        },
+        {
+          "aspectRatio": "auto 375 / 377",
+          "objectFit": "cover",
+          "lazy": "lazy"
+        }
+      ]
+    },
+    "mobileLayout": {
+      "h1FontSize": "13px",
+      "cardsDisplay": "flex",
+      "gridColumns": null
+    }
+  },
+  "https://dominiqueansel.com": {
+    "hero": {
+      "bgColor": "#ffffff",
+      "height": "2367.86px",
+      "layout": "block",
+      "padding": "155px 0px 0px"
+    },
+    "typography": {
+      "h1": {
+        "fontFamily": "\"Proxima Nova\"",
+        "fontSize": "40px",
+        "lineHeight": "44px",
+        "letterSpacing": "normal"
+      },
+      "p": {
+        "fontFamily": "\"Proxima Nova\"",
+        "fontSize": "18px",
+        "lineHeight": "23.4px",
+        "letterSpacing": "0.18px"
+      }
+    },
+    "colors": [
+      "#ffffff",
+      "#282d22",
+      "#616356",
+      "#b8baab",
+      "#000000",
+      "#333333",
+      "#408bd1",
+      "#4a5565",
+      "#222222"
+    ],
+    "navigation": {
+      "type": "static",
+      "height": "60px",
+      "background": "#000000",
+      "items": 5
+    },
+    "cta": {
+      "bgColor": "#b8baab",
+      "borderRadius": "30px",
+      "padding": "0px",
+      "fontSize": "20px",
+      "text": "×"
+    },
+    "productCards": {
+      "displayMode": "block",
+      "gridTemplateColumns": null,
+      "gap": "normal",
+      "childBorderRadius": "0px",
+      "childBoxShadow": "none"
+    },
+    "trustSignals": [
+      "stars rating"
+    ],
+    "images": {
+      "count": 30,
+      "examples": [
+        {
+          "aspectRatio": "auto 1230 / 527",
+          "objectFit": "fill",
+          "lazy": "auto"
+        },
+        {
+          "aspectRatio": "auto 1230 / 527",
+          "objectFit": "fill",
+          "lazy": "auto"
+        },
+        {
+          "aspectRatio": "auto 1230 / 527",
+          "objectFit": "fill",
+          "lazy": "auto"
+        }
+      ]
+    },
+    "mobileLayout": {
+      "h1FontSize": "40px",
+      "cardsDisplay": "block",
+      "gridColumns": null
+    }
+  },
+  "https://www.laduree.com": {
+    "hero": {
+      "bgColor": "#000000",
+      "height": "0px",
+      "layout": "block",
+      "padding": "0px"
+    },
+    "typography": {
+      "h1": {
+        "fontFamily": "\"Adobe Garamond Pro\", serif",
+        "fontSize": "74px",
+        "lineHeight": "66.6px",
+        "letterSpacing": "-2.22px"
+      },
+      "p": {
+        "fontFamily": "\"Adobe Garamond Pro\", serif",
+        "fontSize": "16px",
+        "lineHeight": "22.4px",
+        "letterSpacing": "0.32px"
+      }
+    },
+    "colors": [
+      "#fefbf4",
+      "#1d1a17",
+      "#2e2c2a",
+      "#ffffff",
+      "#46413d",
+      "oklab(0.220097 0.00285924 0.00685798 / 0.4)",
+      "#fffdf9",
+      "#fffff5",
+      "oklab(0.294488 0.00176656 0.00426927 / 0.85)",
+      "oklab(0.294488 0.00176656 0.00426927 / 0.8)",
+      "oklab(0.220097 0.00285924 0.00685798 / 0.8)",
+      "#000000",
+      "#eb5757",
+      "#fbdbe2",
+      "#b71606"
+    ],
+    "navigation": {
+      "type": "fixed",
+      "height": "35.5469px",
+      "background": "#fffdf9",
+      "items": 3
+    },
+    "cta": {
+      "bgColor": "#000000",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "fontSize": "16px",
+      "text": ""
+    },
+    "productCards": {
+      "displayMode": "grid",
+      "gridTemplateColumns": "417.453px",
+      "gap": "normal",
+      "childBorderRadius": "0px",
+      "childBoxShadow": "none"
+    },
+    "trustSignals": [],
+    "images": {
+      "count": 51,
+      "examples": [
+        {
+          "aspectRatio": "auto",
+          "objectFit": "fill",
+          "lazy": "lazy"
+        },
+        {
+          "aspectRatio": "auto 347 / 230",
+          "objectFit": "cover",
+          "lazy": "lazy"
+        },
+        {
+          "aspectRatio": "auto 229 / 140",
+          "objectFit": "cover",
+          "lazy": "lazy"
+        }
+      ]
+    },
+    "mobileLayout": {
+      "h1FontSize": "40.0003px",
+      "cardsDisplay": "grid",
+      "gridColumns": "347.391px"
+    }
+  },
+  "https://cakeisland.ng": {
+    "error": "page.goto: net::ERR_NAME_NOT_RESOLVED at https://cakeisland.ng/\nCall log:\n\u001b[2m  - navigating to \"https://cakeisland.ng/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  },
+  "https://yefepere.com": {
+    "hero": {
+      "bgColor": "#000000",
+      "height": "0px",
+      "layout": "block",
+      "padding": "0px"
+    },
+    "typography": {
+      "h1": {
+        "fontFamily": "\"Sharp Grotesk\", system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+        "fontSize": "56px",
+        "lineHeight": "67.2px",
+        "letterSpacing": "normal"
+      },
+      "p": {
+        "fontFamily": "Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+        "fontSize": "16px",
+        "lineHeight": "25.6px",
+        "letterSpacing": "normal"
+      }
+    },
+    "colors": [
+      "#303032",
+      "#212529",
+      "#dcd8c4",
+      "#e87925",
+      "#ffffff",
+      "#0d6efd",
+      "#424242",
+      "#f4364c",
+      "#020101",
+      "#000000",
+      "#f7f2f3",
+      "#684b4f"
+    ],
+    "navigation": {
+      "type": "static",
+      "height": "0px",
+      "background": "#000000",
+      "items": 8
+    },
+    "cta": {
+      "bgColor": "#e87925",
+      "borderRadius": "25px",
+      "padding": "0px 20px",
+      "fontSize": "16px",
+      "text": "cake store"
+    },
+    "productCards": {
+      "displayMode": "inline-flex",
+      "gridTemplateColumns": null,
+      "gap": "56px",
+      "childBorderRadius": "0px",
+      "childBoxShadow": "none"
+    },
+    "trustSignals": [
+      "reviews"
+    ],
+    "images": {
+      "count": 82,
+      "examples": [
+        {
+          "aspectRatio": "auto 160 / 40",
+          "objectFit": "cover",
+          "lazy": "eager"
+        },
+        {
+          "aspectRatio": "auto 550 / 500",
+          "objectFit": "cover",
+          "lazy": "eager"
+        },
+        {
+          "aspectRatio": "auto 400 / 450",
+          "objectFit": "cover",
+          "lazy": "eager"
+        }
+      ]
+    },
+    "mobileLayout": {
+      "h1FontSize": "32px",
+      "cardsDisplay": "inline-flex",
+      "gridColumns": null
+    }
+  },
+  "https://hansandrene.com": {
+    "hero": {
+      "bgColor": "#000000",
+      "height": "98.5px",
+      "layout": "block",
+      "padding": "0px"
+    },
+    "typography": {
+      "h1": {
+        "fontFamily": "Recoleta, Poppins",
+        "fontSize": "60px",
+        "lineHeight": "60px",
+        "letterSpacing": "normal"
+      },
+      "p": {
+        "fontFamily": "\"Founder's Grotesk\", Poppins",
+        "fontSize": "20px",
+        "lineHeight": "27px",
+        "letterSpacing": "normal"
+      }
+    },
+    "colors": [
+      "#ffffff",
+      "#333333",
+      "#222222",
+      "#eea287",
+      "#000000",
+      "#1c1c1c",
+      "#cccccc",
+      "#686459",
+      "#fafafa",
+      "#999999",
+      "#82d6f0",
+      "#69727d",
+      "#666666",
+      "#eeeeee"
+    ],
+    "navigation": {
+      "type": "static",
+      "height": "98.5px",
+      "background": "#000000",
+      "items": 52
+    },
+    "cta": {
+      "bgColor": "#000000",
+      "borderRadius": "100%",
+      "padding": "0px",
+      "fontSize": "14px",
+      "text": ""
+    },
+    "productCards": {
+      "displayMode": "flex",
+      "gridTemplateColumns": null,
+      "gap": "normal",
+      "childBorderRadius": "0px",
+      "childBoxShadow": "none"
+    },
+    "trustSignals": [
+      "reviews"
+    ],
+    "images": {
+      "count": 31,
+      "examples": [
+        {
+          "aspectRatio": "auto 600 / 600",
+          "objectFit": "fill",
+          "lazy": "auto"
+        },
+        {
+          "aspectRatio": "auto 600 / 600",
+          "objectFit": "fill",
+          "lazy": "auto"
+        },
+        {
+          "aspectRatio": "auto 600 / 600",
+          "objectFit": "fill",
+          "lazy": "auto"
+        }
+      ]
+    },
+    "mobileLayout": {
+      "h1FontSize": "40px",
+      "cardsDisplay": "flex",
+      "gridColumns": null
+    }
+  },
+  "https://tartine.com": {
+    "hero": {
+      "bgColor": "#101c36",
+      "height": "189.438px",
+      "layout": "block",
+      "padding": "77px 0px 0px"
+    },
+    "typography": {
+      "h1": {
+        "fontFamily": "Helvetica, Arial, sans-serif",
+        "fontSize": "32px",
+        "lineHeight": "normal",
+        "letterSpacing": "normal"
+      },
+      "p": null
+    },
+    "colors": [
+      "#101c36",
+      "#ffffff"
+    ],
+    "productCards": {
+      "displayMode": "block",
+      "gridTemplateColumns": null,
+      "gap": "normal",
+      "childBorderRadius": "0px",
+      "childBoxShadow": "none"
+    },
+    "trustSignals": [],
+    "images": {
+      "count": 0,
+      "examples": []
+    },
+    "mobileLayout": {
+      "h1FontSize": "32px",
+      "cardsDisplay": "block",
+      "gridColumns": null
+    }
+  },
+  "https://www.pierreherme.com": {
+    "hero": {
+      "bgColor": "#ffffff",
+      "height": "100px",
+      "layout": "block",
+      "padding": "0px"
+    },
+    "typography": {
+      "h1": {
+        "fontFamily": "FuturaLight, Helvetica, sans-serif",
+        "fontSize": "26px",
+        "lineHeight": "28.6px",
+        "letterSpacing": "normal"
+      },
+      "p": {
+        "fontFamily": "FuturaBook, Arial, sans-serif",
+        "fontSize": "15px",
+        "lineHeight": "24px",
+        "letterSpacing": "normal"
+      }
+    },
+    "colors": [
+      "#ffffff",
+      "#000000",
+      "#333333",
+      "#c72d49",
+      "#eeeeee",
+      "#444444",
+      "#c72c48",
+      "#1c1918",
+      "#cccccc",
+      "#5a67e9",
+      "#1979c3"
+    ],
+    "navigation": {
+      "type": "relative",
+      "height": "100px",
+      "background": "#ffffff",
+      "items": 8
+    },
+    "cta": {
+      "bgColor": "#eeeeee",
+      "borderRadius": "0px",
+      "padding": "8px 16px",
+      "fontSize": "16px",
+      "text": "Learn More →"
+    },
+    "productCards": {
+      "displayMode": "none",
+      "gridTemplateColumns": null,
+      "gap": "normal",
+      "childBorderRadius": "0px",
+      "childBoxShadow": "none"
+    },
+    "trustSignals": [],
+    "images": {
+      "count": 26,
+      "examples": [
+        {
+          "aspectRatio": "auto",
+          "objectFit": "fill",
+          "lazy": "auto"
+        },
+        {
+          "aspectRatio": "auto",
+          "objectFit": "fill",
+          "lazy": "auto"
+        },
+        {
+          "aspectRatio": "auto",
+          "objectFit": "fill",
+          "lazy": "auto"
+        }
+      ]
+    },
+    "mobileLayout": {
+      "h1FontSize": "26px",
+      "cardsDisplay": "none",
+      "gridColumns": null
+    }
+  },
+  "https://thebutterend.com": {
+    "hero": {
+      "bgColor": "#000000",
+      "height": "613.594px",
+      "layout": "block",
+      "padding": "0px"
+    },
+    "typography": {
+      "h1": {
+        "fontFamily": "Fraunces",
+        "fontSize": "49.3719px",
+        "lineHeight": "54.3091px",
+        "letterSpacing": "-0.493719px"
+      },
+      "p": {
+        "fontFamily": "Fraunces",
+        "fontSize": "20px",
+        "lineHeight": "26px",
+        "letterSpacing": "normal"
+      }
+    },
+    "colors": [
+      "#ffffff",
+      "#000000",
+      "#3374ff",
+      "#212121"
+    ],
+    "navigation": {
+      "type": "static",
+      "height": "auto",
+      "background": "#000000",
+      "items": 26
+    },
+    "cta": {
+      "bgColor": "#000000",
+      "borderRadius": "0px",
+      "padding": "0px",
+      "fontSize": "13.3333px",
+      "text": ""
+    },
+    "productCards": {
+      "displayMode": "block",
+      "gridTemplateColumns": null,
+      "gap": "normal",
+      "childBorderRadius": "0px",
+      "childBoxShadow": "none"
+    },
+    "trustSignals": [
+      "stars rating"
+    ],
+    "images": {
+      "count": 21,
+      "examples": [
+        {
+          "aspectRatio": "auto",
+          "objectFit": "fill",
+          "lazy": "auto"
+        },
+        {
+          "aspectRatio": "auto",
+          "objectFit": "fill",
+          "lazy": "auto"
+        },
+        {
+          "aspectRatio": "auto",
+          "objectFit": "fill",
+          "lazy": "auto"
+        }
+      ]
+    },
+    "mobileLayout": {
+      "h1FontSize": "39.7068px",
+      "cardsDisplay": "block",
+      "gridColumns": null
+    }
+  },
+  "https://ladureeus.com": {
+    "error": "page.goto: net::ERR_CONNECTION_TIMED_OUT at https://ladureeus.com/\nCall log:\n\u001b[2m  - navigating to \"https://ladureeus.com/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+  }
+}
