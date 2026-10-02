@@ -1,47 +1,181 @@
-import Link from 'next/link';
+'use client';
 
-export default function Home() {
+import { useState } from 'react';
+import Image from 'next/image';
+import { products } from '@/data/products';
+import { copy } from '@/data/copy';
+import { WhatsAppButton } from '@/components/whatsapp-button';
+
+export default function MasterPrototype() {
+  const [flippedCardId, setFlippedCardId] = useState<string | null>(null);
+
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-8 font-sans">
-      <div className="max-w-2xl w-full text-center">
-        <h1 className="text-4xl font-bold mb-4">Cakesbynessahh</h1>
-        <p className="text-white/60 mb-12 text-lg">Select a prototype to review the full build.</p>
-        
-        <div className="flex flex-col gap-4">
-          <Link 
-            href="/warm-kitchen"
-            className="p-6 border border-white/10 rounded-xl hover:bg-white/5 transition-colors flex justify-between items-center group"
-          >
-            <div className="text-left">
-              <h2 className="text-xl font-bold text-[#B8956A]">Warm Kitchen</h2>
-              <p className="text-sm text-white/50 mt-1">Olive & brass palette, asymmetrical layout.</p>
-            </div>
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-          </Link>
-
-          <Link 
-            href="/css-depth"
-            className="p-6 border border-white/10 rounded-xl hover:bg-white/5 transition-colors flex justify-between items-center group"
-          >
-            <div className="text-left">
-              <h2 className="text-xl font-bold text-[#D68E5E]">CSS Depth</h2>
-              <p className="text-sm text-white/50 mt-1">Apple-style fluid depth, 3D CSS transforms.</p>
-            </div>
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-          </Link>
-
-          <Link 
-            href="/lookbook"
-            className="p-6 border border-white/10 rounded-xl hover:bg-white/5 transition-colors flex justify-between items-center group"
-          >
-            <div className="text-left">
-              <h2 className="text-xl font-bold text-[#7A8FA6]">Lookbook</h2>
-              <p className="text-sm text-white/50 mt-1">Magazine editorial, scroll-triggered reveals.</p>
-            </div>
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-          </Link>
+    <div className="font-nunito bg-[#FAF8F5] antialiased">
+      
+      {/* NAVIGATION (Sticky Header) */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#E8E0D4]/90 backdrop-blur-md border-b border-[#1C1C1C]/5 transition-all">
+        <div className="max-w-7xl mx-auto w-full px-8 py-5 flex justify-between items-center">
+          <div className="text-2xl font-black tracking-tight text-[#1C1C1C]">Cakes by Nessa</div>
+          <div className="hidden md:flex gap-8 text-[#4A5D3A] font-bold">
+            <a href="#menu" className="hover:text-[#1C1C1C] transition-colors">Menu</a>
+            <a href="#custom" className="hover:text-[#1C1C1C] transition-colors">Custom Order</a>
+            <a href="#contact" className="hover:text-[#1C1C1C] transition-colors">Contact</a>
+          </div>
         </div>
-      </div>
-    </main>
+      </nav>
+
+      {/* HERO SECTION (Warm Kitchen UI) */}
+      <section className="w-full bg-[#E8E0D4] text-[#1C1C1C] min-h-[90vh] flex flex-col pt-32 pb-24">
+        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row items-center gap-16 flex-1 w-full">
+          {/* 55% Image Left */}
+          <div className="w-full md:w-[55%] relative h-[65vh] rounded-[12px] overflow-hidden shadow-2xl">
+            <Image 
+              src="/images/hero/kitchen-atmosphere.png" 
+              alt="Kitchen Atmosphere" 
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 55vw"
+              className="object-cover hover:scale-105 transition-transform duration-[2s]" 
+            />
+          </div>
+          {/* 45% Text Right */}
+          <div className="w-full md:w-[45%] flex flex-col items-start">
+            <h1 className="text-5xl md:text-[80px] font-bold leading-[1.05] mb-6 text-[#1C1C1C] tracking-tight">Making every celebration sweeter</h1>
+            <p className="text-lg md:text-xl text-[#1C1C1C]/80 mb-10 max-w-md leading-relaxed font-semibold">
+              We bake fresh cakes and pastries every morning. You can pick up daily items or request a custom cake for your next event. Order your celebration cakes, bento cakes, cupcakes, cake parfaits, cake loaves, banana bread, pastries, small chops, snacks, food trays, and surprise packages.
+            </p>
+            <a 
+              href={copy.whatsappLink}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-[#4A5D3A] text-[#E8E0D4] px-10 py-5 rounded-[8px] font-bold text-lg hover:bg-[#3A492D] transition-colors active:scale-95 shadow-md flex items-center gap-3"
+            >
+              Message us on WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* MENU SECTION (CSS Depth Mechanics + Lookbook Typography) */}
+      <main id="menu" className="w-full bg-[#FAF8F5] pt-32 pb-32 px-6 relative z-10 scroll-mt-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col items-center mb-20">
+            <h2 className="font-lora text-5xl md:text-6xl text-[#000000] mb-4">Collection</h2>
+            <p className="font-inter text-[#000000]/60 max-w-lg text-center leading-relaxed">Available daily or via 24-hour pre-order. Tap or hover any item to view details and request an order.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" style={{ perspective: '1200px' }}>
+            
+            {products.map((product) => (
+              <div 
+                key={product.id} 
+                className="group relative h-[420px] w-full cursor-pointer preserve-3d"
+                onClick={() => setFlippedCardId(flippedCardId === product.id ? null : product.id)}
+              >
+                <div className={`flip-inner relative w-full h-full ${flippedCardId === product.id ? 'is-flipped' : ''}`}>
+                  
+                  {/* Front Face */}
+                  <div className="absolute inset-0 bg-[#FFFFFF] rounded-2xl shadow-sm border border-[#000000]/5 overflow-hidden backface-hidden flex flex-col">
+                    <div className="relative h-[60%] w-full bg-[#f5f5f5] overflow-hidden">
+                      <Image 
+                        src={product.image} 
+                        alt={product.name} 
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+                      />
+                    </div>
+                    <div className="p-6 flex flex-col justify-center flex-1">
+                      <h3 className="font-lora text-xl mb-1 text-[#000000] leading-tight">{product.name}</h3>
+                      <span className="font-inter font-medium text-[#7A8FA6] tracking-wide mt-auto">₦{product.price.toLocaleString()}</span>
+                    </div>
+                  </div>
+                  
+                  {/* Back Face (Flipped) */}
+                  <div className="absolute inset-0 bg-[#FFFFFF] rounded-2xl shadow-xl border border-[#000000]/10 p-6 flex flex-col justify-between backface-hidden rotate-y-180">
+                    <div>
+                      <h3 className="font-lora text-2xl mb-3 text-[#000000] leading-tight">{product.name}</h3>
+                      <p className="font-inter text-[13px] text-[#000000]/70 mb-6 leading-[1.6]">{product.description}</p>
+                      <div className="border-t border-[#000000]/10 pt-4 flex justify-between items-center text-[11px] uppercase tracking-widest text-[#000000]/50 font-inter font-medium">
+                        <span>{product.size}</span>
+                        <span>Serves {product.serves}</span>
+                      </div>
+                    </div>
+                    <WhatsAppButton 
+                      productName={product.name} 
+                      price={product.price} 
+                      className="w-full text-center border border-[#000000] text-[#000000] py-3 uppercase tracking-[0.15em] text-[11px] font-semibold hover:bg-[#000000] hover:text-white transition-colors bg-transparent font-inter block" 
+                    >
+                      Order Request
+                    </WhatsAppButton>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+          </div>
+        </div>
+      </main>
+
+      {/* CUSTOM ORDER SECTION (Lookbook Typography & Layout) */}
+      <section id="custom" className="w-full bg-[#FFFFFF] pt-32 pb-32 border-t border-[#000000]/5 relative z-20 scroll-mt-16">
+        <div className="max-w-4xl mx-auto px-12 grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div>
+            <h2 className="font-lora text-5xl mb-8 text-[#000000]">Commissions</h2>
+            <p className="font-inter text-[15px] leading-[1.8] text-[#000000]/70 mb-8 max-w-sm">
+              For events requiring specific flavor profiles and aesthetic direction, we accept custom requests. Please provide at least 24 hours notice for all bespoke builds.
+            </p>
+          </div>
+          
+          <div className="space-y-10 font-inter">
+            <input type="text" placeholder="Event Date" className="lookbook-input w-full py-4 text-[15px] text-[#000000] placeholder:text-[#000000]/40" />
+            <textarea placeholder="Vision & Details (Flavors, Size, Aesthetic)" rows={3} className="lookbook-input w-full py-4 text-[15px] text-[#000000] placeholder:text-[#000000]/40 resize-none"></textarea>
+            
+            <div className="pt-4">
+              <a 
+                href={copy.whatsappLink}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block text-[13px] uppercase tracking-[0.15em] font-semibold pb-2 border-b border-[#000000] hover:text-[#7A8FA6] hover:border-[#7A8FA6] transition-colors text-[#000000] bg-transparent"
+              >
+                Contact via WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT & FOOTER */}
+      <footer id="contact" className="w-full bg-[#FAFAFA] pt-24 pb-12 border-t border-[#000000]/5 scroll-mt-16">
+        <div className="max-w-7xl mx-auto px-12 grid grid-cols-1 md:grid-cols-2 gap-16 font-inter text-[14px]">
+          
+          {/* Location */}
+          <div>
+            <div className="font-medium mb-6 uppercase tracking-[0.2em] text-[12px] text-[#7A8FA6]">Location</div>
+            <p className="text-[#000000] text-lg mb-2 font-medium">Airport Road</p>
+            <p className="text-[#000000]/60 mb-6">Benin City, Edo State, Nigeria</p>
+            <p className="text-[#000000]/80 mb-8">Mon - Sat, 9:00am - 6:00pm</p>
+            <a href={copy.whatsappLink} target="_blank" rel="noopener noreferrer" className="text-[#000000] border-b border-[#000000] pb-1 uppercase tracking-widest text-[12px] hover:text-[#7A8FA6] hover:border-[#7A8FA6] transition-all font-semibold">
+              Message Us Directly
+            </a>
+          </div>
+
+          {/* WebNests Watermark */}
+          <div className="flex flex-col justify-end items-start md:items-end">
+            <div className="flex items-center gap-3 bg-[#FFFFFF] px-6 py-4 rounded-xl border border-[#000000]/5 shadow-sm">
+              <span className="text-[#000000]/50 text-xs font-semibold uppercase tracking-wider">Created by</span>
+              <a href="https://webnests.site" target="_blank" rel="noopener noreferrer" className="font-bold flex items-center gap-3 text-lg hover:text-[#7A8FA6] transition-colors">
+                WebNests
+                <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center border border-gray-300">
+                  <Image src="/images/webnest-logo.png" alt="WebNests Logo" width={32} height={32} className="object-cover" />
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </footer>
+
+    </div>
   );
 }

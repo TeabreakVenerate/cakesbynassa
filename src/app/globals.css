@@ -15,6 +15,46 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  background-color: white;
-  color: black;
+  background-color: #FAF8F5;
+  color: #1C1C1C;
+  scroll-behavior: smooth;
 }
+
+/* Apple-style Fluid Depth 3D CSS */
+.preserve-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+.flip-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (hover: hover) {
+  .group:hover .flip-inner {
+    transform: rotateY(180deg);
+  }
+}
+.flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+.rotate-y-180 { transform: rotateY(180deg); }
+
+/* Custom Selection Colors */
+::selection { background: #4A5D3A; color: #E8E0D4; }
+
+/* Lookbook Minimalist Inputs */
+.lookbook-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-radius: 0;
+  transition: border-color 0.3s ease;
+}
+.lookbook-input:focus {
+  outline: none;
+  border-bottom-color: #7A8FA6;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #FAF8F5; }
+::-webkit-scrollbar-thumb { background: #dcdcdc; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #c0c0c0; }
