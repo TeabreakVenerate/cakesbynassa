@@ -2,8 +2,7 @@
 import { useEffect } from 'react';
 
 const VARIANTS = [
-  'Warm Kitchen', 'Noir', '3D Showroom', 'CSS Depth', 
-  'Benin Direct', 'Lookbook', 'Bento Grid', 'Dispatch Board'
+  'Warm Kitchen', 'CSS Depth', 'Lookbook'
 ];
 
 interface PickerProps {
@@ -20,7 +19,7 @@ export function Picker({ activeVariantIndex, onVariantChange }: PickerProps) {
       }
       
       const num = parseInt(e.key);
-      if (!isNaN(num) && num >= 1 && num <= 8) {
+      if (!isNaN(num) && num >= 1 && num <= 3) {
         onVariantChange(num - 1);
       }
     };
