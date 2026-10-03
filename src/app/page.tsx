@@ -4,10 +4,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { products } from '@/data/products';
 import { copy } from '@/data/copy';
-import { WhatsAppButton } from '@/components/whatsapp-button';
 
 export default function MasterPrototype() {
   const [flippedCardId, setFlippedCardId] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <div className="font-nunito bg-[#FAF8F5] antialiased">
@@ -16,12 +16,33 @@ export default function MasterPrototype() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#E8E0D4]/90 backdrop-blur-md border-b border-[#1C1C1C]/5 transition-all">
         <div className="max-w-7xl mx-auto w-full px-8 py-5 flex justify-between items-center">
           <div className="text-2xl font-black tracking-tight text-[#1C1C1C]">Cakes by Nessa</div>
+          
+          {/* Desktop Menu */}
           <div className="hidden md:flex gap-8 text-[#4A5D3A] font-bold">
             <a href="#menu" className="hover:text-[#1C1C1C] transition-colors">Menu</a>
             <a href="#custom" className="hover:text-[#1C1C1C] transition-colors">Custom Order</a>
             <a href="#contact" className="hover:text-[#1C1C1C] transition-colors">Contact</a>
           </div>
+
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="md:hidden flex flex-col gap-[5px] justify-center items-center w-8 h-8"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <div className={`w-6 h-[2px] bg-[#1C1C1C] transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+            <div className={`w-6 h-[2px] bg-[#1C1C1C] transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+            <div className={`w-6 h-[2px] bg-[#1C1C1C] transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+          </button>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-[#E8E0D4] border-b border-[#1C1C1C]/10 flex flex-col px-8 py-6 gap-6 text-lg font-bold text-[#4A5D3A] shadow-lg">
+            <a href="#menu" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#1C1C1C]">Menu</a>
+            <a href="#custom" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#1C1C1C]">Custom Order</a>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[#1C1C1C]">Contact</a>
+          </div>
+        )}
       </nav>
 
       {/* HERO SECTION (Warm Kitchen UI) */}
@@ -87,7 +108,6 @@ export default function MasterPrototype() {
                     </div>
                     <div className="p-6 flex flex-col justify-center flex-1">
                       <h3 className="font-lora text-xl mb-1 text-[#000000] leading-tight">{product.name}</h3>
-                      <span className="font-inter font-medium text-[#7A8FA6] tracking-wide mt-auto">₦{product.price.toLocaleString()}</span>
                     </div>
                   </div>
                   
@@ -101,13 +121,14 @@ export default function MasterPrototype() {
                         <span>Serves {product.serves}</span>
                       </div>
                     </div>
-                    <WhatsAppButton 
-                      productName={product.name} 
-                      price={product.price} 
+                    <a 
+                      href={`https://wa.me/2349059340229?text=${encodeURIComponent(`I'm interested in this: ${product.description}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-full text-center border border-[#000000] text-[#000000] py-3 uppercase tracking-[0.15em] text-[11px] font-semibold hover:bg-[#000000] hover:text-white transition-colors bg-transparent font-inter block" 
                     >
                       Order Request
-                    </WhatsAppButton>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -154,14 +175,20 @@ export default function MasterPrototype() {
             <div className="font-medium mb-6 uppercase tracking-[0.2em] text-[12px] text-[#7A8FA6]">Location</div>
             <p className="text-[#000000] text-lg mb-2 font-medium">Airport Road</p>
             <p className="text-[#000000]/60 mb-6">Benin City, Edo State, Nigeria</p>
-            <p className="text-[#000000]/80 mb-8">Mon - Sat, 9:00am - 6:00pm</p>
-            <a href={copy.whatsappLink} target="_blank" rel="noopener noreferrer" className="text-[#000000] border-b border-[#000000] pb-1 uppercase tracking-widest text-[12px] hover:text-[#7A8FA6] hover:border-[#7A8FA6] transition-all font-semibold">
-              Message Us Directly
-            </a>
+            <p className="text-[#000000]/80 mb-6">Mon - Sat, 9:00am - 6:00pm</p>
+            
+            <div className="flex flex-col items-start gap-4">
+              <a href={copy.whatsappLink} target="_blank" rel="noopener noreferrer" className="text-[#000000] border-b border-[#000000] pb-1 uppercase tracking-widest text-[12px] hover:text-[#7A8FA6] hover:border-[#7A8FA6] transition-all font-semibold inline-block">
+                Message Us Directly
+              </a>
+              <a href="https://www.instagram.com/cakesbynessahh" target="_blank" rel="noopener noreferrer" className="text-[#000000] border-b border-[#000000] pb-1 uppercase tracking-widest text-[12px] hover:text-[#7A8FA6] hover:border-[#7A8FA6] transition-all font-semibold inline-block">
+                Follow on Instagram
+              </a>
+            </div>
           </div>
 
           {/* WebNests Watermark */}
-          <div className="flex flex-col justify-end items-start md:items-end">
+          <div className="flex flex-col justify-end items-start md:items-end mt-8 md:mt-0">
             <div className="flex items-center gap-3 bg-[#FFFFFF] px-6 py-4 rounded-xl border border-[#000000]/5 shadow-sm">
               <span className="text-[#000000]/50 text-xs font-semibold uppercase tracking-wider">Created by</span>
               <a href="https://webnests.site" target="_blank" rel="noopener noreferrer" className="font-bold flex items-center gap-3 text-lg hover:text-[#7A8FA6] transition-colors">
